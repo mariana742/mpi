@@ -1,0 +1,91 @@
+:root{--biru:#0b5fa5;--hijau:#0e9a6b;--kuning:#fff3c4;--abu:#f4f6f8;--teks:#1f2937}
+*{box-sizing:border-box}
+html{font-size:16px}
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;color:var(--teks);line-height:1.65;background:#fff;overflow-wrap:break-word}
+h1{font-size:clamp(1.6rem,4.5vw,2.4rem);line-height:1.2;margin:.3em 0}
+h2{font-size:clamp(1.25rem,3.5vw,1.6rem);line-height:1.3}
+header{background:var(--biru);color:#fff;padding:clamp(20px,4vw,36px) 20px}
+header a{color:#ffe082}
+.wrap{width:min(94vw,900px);margin:0 auto;padding:20px 16px}
+.card{border:1px solid #dce3ea;border-radius:14px;padding:18px;margin:16px 0;background:#fff}
+.card.guru{background:#eef7ff;border-color:#bcd7f0}
+.pill{display:inline-block;background:var(--kuning);color:#1f2937;border-radius:999px;padding:4px 12px;font-weight:700;font-size:.9em}
+.btn{background:var(--biru);color:#fff;border:0;border-radius:12px;padding:12px 18px;cursor:pointer;font-size:1em;min-height:48px;touch-action:manipulation}
+.btn.hijau{background:var(--hijau)}
+.btn:hover{opacity:.92}
+.btn:focus-visible,.num:focus-visible,input:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid #f59e0b;outline-offset:3px}
+input[type=text],input[type=number],textarea{padding:11px;border:1px solid #cbd5e1;border-radius:10px;width:100%;max-width:420px;font-size:1em;min-height:48px}
+textarea{max-width:100%}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.benar{color:#0e7a55;font-weight:700} .salah{color:#b42318;font-weight:700}
+details{border:1px solid #dce3ea;border-radius:10px;padding:12px 14px;margin:10px 0}
+details summary{cursor:pointer;min-height:44px}
+.num{display:inline-flex;align-items:center;justify-content:center;min-width:52px;min-height:52px;text-align:center;background:var(--abu);border:1px solid #cbd5e1;border-radius:10px;padding:10px;margin:5px;cursor:pointer;font-weight:700;font-size:1.05em;touch-action:manipulation}
+.num.pilih{background:#ffe082}
+footer{color:#667085;font-size:.9em;padding:20px;text-align:center}
+
+/* HP: satu kolom, tombol penuh, target sentuh besar */
+@media (max-width:600px){
+  .wrap{width:100%;padding:16px 14px}
+  .card{padding:16px;border-radius:12px}
+  .grid{grid-template-columns:1fr}
+  .btn{width:100%;padding:14px 16px;margin:4px 0}
+  .btn + .btn{margin-top:8px}
+  input[type=text],input[type=number]{max-width:100%}
+  .num{min-width:56px;min-height:56px}
+}
+
+/* HP landscape: header lebih ramping supaya konten cepat terlihat */
+@media (max-width:900px) and (orientation:landscape){
+  header{padding:14px 16px}
+  .wrap{padding-top:12px}
+}
+
+/* Tablet: dua kolom, ruang napas lebih lega */
+@media (min-width:601px) and (max-width:1024px){
+  html{font-size:17px}
+  .wrap{width:min(92vw,860px);padding:22px 20px}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .card{padding:22px}
+  .btn{min-height:52px}
+}
+
+/* Laptop: tata letak standar, tiga kartu di beranda */
+@media (min-width:1025px) and (max-width:1399px){
+  .wrap{width:min(92vw,1000px)}
+  .grid{grid-template-columns:repeat(3,1fr)}
+}
+
+/* Layar besar 1400-1599 (laptop besar / TV yang diset resolusi menengah):
+   teks sedikit diperbesar supaya tetap terbaca dari agak jauh */
+@media (min-width:1400px) and (max-width:1599px){
+  html{font-size:19px}
+  .wrap{width:min(92vw,1200px)}
+  .grid{grid-template-columns:repeat(3,1fr)}
+  .btn{min-height:56px}
+  .num{min-width:60px;min-height:60px}
+}
+
+/* TV / Panel Interaktif Digital 52 inci ke atas: teks jauh lebih besar,
+   dibaca dari jarak 2-3 meter, target sentuh / klik jauh lebih besar */
+@media (min-width:1600px){
+  html{font-size:21px}
+  body{line-height:1.7}
+  .wrap{width:min(92vw,1440px);padding:32px 24px}
+  header{padding:44px 24px}
+  h1{font-size:2.9rem}
+  h2{font-size:1.9rem}
+  .card{padding:30px;border-radius:18px;margin:22px 0}
+  .grid{grid-template-columns:repeat(3,1fr);gap:22px}
+  .btn{padding:17px 28px;min-height:64px;font-size:1.05em;border-radius:14px}
+  input[type=text],input[type=number],textarea{padding:15px;min-height:60px;max-width:560px;font-size:1.05em}
+  input[type=number]{max-width:240px !important}
+  .num{min-width:72px;min-height:72px;font-size:1.2em;border-radius:12px}
+  details{padding:18px 20px}
+}
+
+/* Layar sangat besar (TV 4K / proyektor): jangan biarkan baris teks terlalu panjang */
+@media (min-width:2200px){
+  html{font-size:23px}
+  .wrap{width:min(88vw,1600px)}
+}
