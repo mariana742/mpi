@@ -24,6 +24,7 @@ refleksi, dan bagian khusus guru (panduan, kunci, miskonsepsi).
 - Kelas 7 Semester 1: Bilangan Bulat (B.1, B.2)
 - Kelas 8 Semester 1: Teorema Pythagoras (G.4)
 - Kelas 9 Semester 1: SPLDV (A.7)
+- Kelas 9 Semester 1: Bangun Ruang Sisi Datar (G.5, P.1) — satu file mandiri (`kelas-9/semester-1/bangun-ruang-sisi-datar.html`), bisa dibuka offline tanpa internet; identitas siswa 9A–9D dan ekspor hasil ke .xlsx/.csv sudah tertanam di dalam file.
 
 Materi lain ditandai "Segera" di daftar kelas dan akan ditambahkan
 dengan pola halaman yang sama.
