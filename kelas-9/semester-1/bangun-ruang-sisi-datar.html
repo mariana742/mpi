@@ -1,0 +1,868 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Media Pembelajaran Interaktif Bangun Ruang Sisi Datar, Kelas 9 Semester 1, Kurikulum Merdeka, TP G.5 dan P.1. Bisa dibuka online maupun offline di PID, HP, dan laptop.">
+<title>Kelas 9 — Bangun Ruang Sisi Datar | MPI Matematika SMP</title>
+<style>
+:root{--biru:#0b5fa5;--hijau:#0e9a6b;--kuning:#fff3c4;--abu:#f4f6f8;--teks:#1f2937;--merah:#b42318;--ungu:#6d28d9}
+*{box-sizing:border-box}
+html{font-size:16px}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;margin:0;color:var(--teks);line-height:1.65;background:#fff;overflow-wrap:break-word}
+h1{font-size:clamp(1.6rem,4.5vw,2.4rem);line-height:1.2;margin:.3em 0}
+h2{font-size:clamp(1.25rem,3.5vw,1.6rem);line-height:1.3}
+h3{font-size:1.1rem;margin:.6em 0}
+header{background:var(--biru);color:#fff;padding:clamp(20px,4vw,36px) 20px}
+header a{color:#ffe082}
+.wrap{width:min(94vw,960px);margin:0 auto;padding:20px 16px}
+.card{border:1px solid #dce3ea;border-radius:14px;padding:18px;margin:16px 0;background:#fff}
+.card.guru{background:#eef7ff;border-color:#bcd7f0}
+.card.kuning{background:#fffbeb;border-color:#fde68a}
+.pill{display:inline-block;background:var(--kuning);color:#1f2937;border-radius:999px;padding:4px 12px;font-weight:700;font-size:.9em}
+.btn{background:var(--biru);color:#fff;border:0;border-radius:12px;padding:12px 18px;cursor:pointer;font-size:1em;min-height:48px;touch-action:manipulation}
+.btn.hijau{background:var(--hijau)}
+.btn.ungu{background:var(--ungu)}
+.btn.abu{background:#64748b}
+.btn:hover{opacity:.92}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn:focus-visible,.num:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid #f59e0b;outline-offset:3px}
+input[type=text],input[type=number],select,textarea{padding:11px;border:1px solid #cbd5e1;border-radius:10px;width:100%;max-width:420px;font-size:1em;min-height:48px;background:#fff}
+textarea{max-width:100%}
+label{display:block;margin:8px 0 4px;font-weight:600}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.benar{color:#0e7a55;font-weight:700}.salah{color:var(--merah);font-weight:700}
+.skor{font-size:1.25rem;font-weight:800}
+details{border:1px solid #dce3ea;border-radius:10px;padding:12px 14px;margin:10px 0}
+details summary{cursor:pointer;min-height:44px}
+.num{display:inline-flex;align-items:center;justify-content:center;min-width:52px;min-height:52px;text-align:center;background:var(--abu);border:1px solid #cbd5e1;border-radius:10px;padding:10px;margin:5px;cursor:pointer;font-weight:700;font-size:1.05em;touch-action:manipulation}
+.num.pilih{background:#ffe082}
+footer{color:#667085;font-size:.9em;padding:20px;text-align:center}
+table{border-collapse:collapse;width:100%;margin:10px 0;font-size:.95em}
+th,td{border:1px solid #cbd5e1;padding:8px 10px;text-align:left;vertical-align:top}
+th{background:#eef2f7}
+.rumus{background:#f8fafc;border-left:4px solid var(--biru);padding:10px 14px;border-radius:0 10px 10px 0;margin:10px 0}
+.nav-mpi{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.nav-mpi a{display:inline-block;background:var(--abu);border:1px solid #cbd5e1;border-radius:999px;padding:8px 14px;text-decoration:none;color:var(--teks);font-weight:600}
+.nav-mpi a:hover{background:#ffe082}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.tab-btn{border:1px solid #cbd5e1;background:#fff;border-radius:999px;padding:10px 16px;cursor:pointer;font-size:1em;font-weight:700;min-height:48px}
+.tab-btn.aktif{background:var(--biru);color:#fff;border-color:var(--biru)}
+.svg-wrap{text-align:center;margin:10px 0}
+.svg-wrap svg{max-width:100%;height:auto}
+.muka{cursor:pointer}
+.muka:hover{opacity:.75}
+.pilihan{display:block;border:1px solid #cbd5e1;border-radius:10px;padding:12px;margin:8px 0;cursor:pointer}
+.pilihan:hover{background:#f8fafc}
+.pilihan input{margin-right:8px}
+.kotak-soal{border:1px dashed #94a3b8;border-radius:10px;padding:12px;margin:10px 0}
+.tabel-scroll{overflow-x:auto}
+.badge{display:inline-block;border-radius:999px;padding:2px 10px;font-size:.85em;font-weight:700;background:#dcfce7;color:#166534}
+.badge.perlu{background:#fee2e2;color:#991b1b}
+.progress{height:12px;background:#e5e7eb;border-radius:999px;overflow:hidden;margin:8px 0}
+.progress>div{height:100%;background:var(--hijau);width:0%}
+.kecil{font-size:.9em;color:#475569}
+@media (max-width:600px){
+  .wrap{width:100%;padding:16px 14px}
+  .card{padding:16px;border-radius:12px}
+  .grid{grid-template-columns:1fr}
+  .btn{width:100%;padding:14px 16px;margin:4px 0}
+  input[type=text],input[type=number],select{max-width:100%}
+  .num{min-width:56px;min-height:56px}
+  table{font-size:.88em}
+}
+@media (min-width:601px) and (max-width:1024px){
+  html{font-size:17px}
+  .wrap{width:min(92vw,860px);padding:22px 20px}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .card{padding:22px}
+  .btn{min-height:52px}
+}
+@media (min-width:1025px) and (max-width:1399px){
+  .wrap{width:min(92vw,1000px)}
+  .grid{grid-template-columns:repeat(3,1fr)}
+}
+@media (min-width:1400px) and (max-width:1599px){
+  html{font-size:19px}
+  .wrap{width:min(92vw,1200px)}
+  .grid{grid-template-columns:repeat(3,1fr)}
+  .btn{min-height:56px}
+  .num{min-width:60px;min-height:60px}
+}
+@media (min-width:1600px){
+  html{font-size:21px}
+  body{line-height:1.7}
+  .wrap{width:min(92vw,1440px);padding:32px 24px}
+  header{padding:44px 24px}
+  h1{font-size:2.9rem}
+  h2{font-size:1.9rem}
+  .card{padding:30px;border-radius:18px;margin:22px 0}
+  .grid{grid-template-columns:repeat(3,1fr);gap:22px}
+  .btn{padding:17px 28px;min-height:64px;font-size:1.05em;border-radius:14px}
+  input[type=text],input[type=number],select,textarea{padding:15px;min-height:60px;max-width:560px;font-size:1.05em}
+  .num{min-width:72px;min-height:72px;font-size:1.2em;border-radius:12px}
+  details{padding:18px 20px}
+  .tab-btn{padding:14px 22px;min-height:60px}
+}
+@media (min-width:2200px){
+  html{font-size:23px}
+  .wrap{width:min(88vw,1600px)}
+}
+@media print{
+  .btn,.nav-mpi,.no-print{display:none !important}
+  .card{break-inside:avoid}
+  body{font-size:12pt}
+}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<p><a href="../../index.html">← Beranda</a> · <a href="../index.html">Daftar Materi Kelas 9</a></p>
+<h1>Kelas 9 • Bangun Ruang Sisi Datar</h1>
+<p><span class="pill">TP G.5 • 6 JP</span> <span class="pill">TP P.1 • 12 JP</span> Semester 1 • Total 18 JP</p>
+<p>Kubus, balok, prisma, dan limas — dari jaring-jaring sampai luas permukaan dan volume. Bisa dibuka <b>online maupun offline</b> di PID, HP, dan laptop: cukup klik dua kali file ini, tanpa internet.</p>
+</div></header>
+<main class="wrap">
+<nav class="nav-mpi no-print" aria-label="Navigasi materi">
+<a href="#identitas">👤 Identitas</a><a href="#pemantik">1. Pemantik</a><a href="#materi">2. Materi Esensial</a><a href="#jaring">3. Jaring-Jaring</a><a href="#rumus">4. Rumus &amp; Kalkulator</a><a href="#sehari">5. Sehari-hari</a><a href="#lkpd">6. LKPD</a><a href="#game">7. Game</a><a href="#kuis">8. Kuis</a><a href="#rekap">9. Rekap &amp; Ekspor</a><a href="#guru">Untuk Guru</a>
+</nav>
+
+<section class="card kuning" id="identitas"><h2>👤 Identitas Siswa — isi dulu sebelum mengerjakan</h2>
+<p>Nama dan kelas diambil dari data absen <b>Kelas 9A–9D</b> (136 siswa) yang dilampirkan guru. Identitas ini akan tercantum di semua hasil ekspor spreadsheet.</p>
+<div class="grid">
+<div><label for="kelasSelect">Kelas</label>
+<select id="kelasSelect"><option value="">— Pilih kelas —</option><option>9A</option><option>9B</option><option>9C</option><option>9D</option></select></div>
+<div><label for="namaSelect">Nama siswa</label>
+<select id="namaSelect"><option value="">— Pilih kelas dulu —</option></select>
+<p id="namaManualWrap" style="display:none"><label for="namaManual">Nama (jika tidak ada di daftar)</label><input type="text" id="namaManual" placeholder="Tulis nama lengkap"></p></div>
+</div>
+<div class="grid">
+<div><label>No. absen</label><input type="text" id="noSiswa" readonly placeholder="otomatis"></div>
+<div><label>NISN / NIS</label><input type="text" id="nisSiswa" readonly placeholder="otomatis"></div>
+</div>
+<p class="kecil">Tanggal: <b id="tanggalHari"></b> • Hasil tersimpan di perangkat ini saja (tidak dikirim ke internet). Guru mengumpulkan hasil lewat tombol ekspor di bagian 9.</p>
+<p id="identitasInfo" class="kecil"></p>
+</section>
+
+<section class="card" id="pemantik"><h2>1. Pemantik — Berkesadaran</h2>
+<p>Perhatikan benda-benda di sekitarmu: <b>kotak sepatu, kardus mie instan, kotak kado, tenda pramuka, dan atap rumah</b>. Apa kesamaannya?</p>
+<p>Semua benda itu dibatasi oleh <b>sisi-sisi yang datar</b> — persegi, persegi panjang, dan segitiga. Itulah <b>bangun ruang sisi datar</b>.</p>
+<div class="kotak-soal"><p><b>Diskusikan berpasangan (2 menit):</b></p>
+<ol><li>Sebutkan 3 benda di kelas atau di rumahmu yang berbentuk balok! Apa bedanya dengan kubus?</li>
+<li>Kalau sebuah kardus dibongkar dan diratakan, bentuknya jadi apa? Itulah yang disebut <b>jaring-jaring</b>.</li>
+<li>Menurutmu, kenapa pembuat kardus harus tahu luas karton yang dibutuhkan?</li></ol></div>
+<p><b>Tujuan pembelajaran (dari ATP MGMP Matematika SMP Kab. Lampung Tengah, Fase D, 2026/2027):</b></p>
+<ul>
+<li><b>G.5 (6 JP):</b> Membuat dan menentukan jaring-jaring bangun ruang (prisma, tabung, limas, dan kerucut) dan membuat bangun ruang tersebut dari jaring-jaringnya.</li>
+<li><b>P.1 (12 JP):</b> Menentukan luas permukaan dan volume bangun ruang sisi datar dan menyelesaikan masalah yang terkait.</li>
+</ul>
+<p class="kecil">Pada materi ini kita fokus pada bangun ruang <b>sisi datar</b>: kubus, balok, prisma, dan limas. Tabung dan kerucut (sisi lengkung) dipelajari pada materi Bangun Ruang Sisi Lengkung.</p>
+</section>
+
+<section class="card" id="materi"><h2>2. Materi Esensial — Kenali Bangunnya</h2>
+<p>Setiap bangun ruang sisi datar punya <b>sisi</b> (bidang pembatas), <b>rusuk</b> (garis pertemuan dua sisi), dan <b>titik sudut</b> (pertemuan rusuk).</p>
+<div class="grid">
+<div class="card"><h3>⬛ Kubus</h3>
+<div class="svg-wrap"><svg viewBox="0 0 200 170" width="200" height="170" role="img" aria-label="Gambar kubus"><polygon points="40,70 120,70 120,150 40,150" fill="#bfdbfe" stroke="#0b5fa5" stroke-width="2"/><polygon points="40,70 70,40 150,40 120,70" fill="#dbeafe" stroke="#0b5fa5" stroke-width="2"/><polygon points="120,70 150,40 150,120 120,150" fill="#93c5fd" stroke="#0b5fa5" stroke-width="2"/><text x="72" y="115" font-size="14" fill="#1e3a5f">s</text><text x="80" y="165" font-size="12" fill="#475569">sisi = s</text></svg></div>
+<p>6 sisi persegi yang sama, 12 rusuk sama panjang, 8 titik sudut.</p><p><b>Contoh:</b> dadu, rubik, kotak kado berbentuk kubus.</p></div>
+<div class="card"><h3>▬ Balok</h3>
+<div class="svg-wrap"><svg viewBox="0 0 220 170" width="220" height="170" role="img" aria-label="Gambar balok"><polygon points="30,80 150,80 150,150 30,150" fill="#bbf7d0" stroke="#0e9a6b" stroke-width="2"/><polygon points="30,80 60,50 180,50 150,80" fill="#dcfce7" stroke="#0e9a6b" stroke-width="2"/><polygon points="150,80 180,50 180,120 150,150" fill="#86efac" stroke="#0e9a6b" stroke-width="2"/><text x="82" y="120" font-size="14" fill="#14532d">p × l</text><text x="70" y="165" font-size="12" fill="#475569">panjang p, lebar l, tinggi t</text></svg></div>
+<p>6 sisi persegi panjang (berpasangan sama), 12 rusuk, 8 titik sudut.</p><p><b>Contoh:</b> kotak sepatu, kardus, batu bata, akuarium.</p></div>
+<div class="card"><h3>🔺 Prisma Segitiga</h3>
+<div class="svg-wrap"><svg viewBox="0 0 220 170" width="220" height="170" role="img" aria-label="Gambar prisma segitiga"><polygon points="40,140 110,60 110,140" fill="#fde68a" stroke="#b45309" stroke-width="2"/><polygon points="110,60 180,60 180,140 110,140" fill="#fef3c7" stroke="#b45309" stroke-width="2"/><polygon points="40,140 110,60 180,60 180,140 110,140 40,140" fill="none" stroke="#b45309" stroke-width="2"/><polygon points="110,60 180,60 110,140" fill="#fcd34d" stroke="#b45309" stroke-width="2" opacity="0.55"/><text x="95" y="165" font-size="12" fill="#475569">alas segitiga • tinggi prisma t</text></svg></div>
+<p>5 sisi (2 segitiga + 3 persegi panjang), 9 rusuk, 6 titik sudut.</p><p><b>Contoh:</b> tenda pramuka, atap rumah, kemasan cokelat Toblerone.</p></div>
+<div class="card"><h3>🔻 Limas Segiempat</h3>
+<div class="svg-wrap"><svg viewBox="0 0 200 170" width="200" height="170" role="img" aria-label="Gambar limas segiempat"><polygon points="40,130 120,110 180,130 100,150" fill="#ddd6fe" stroke="#6d28d9" stroke-width="2"/><polygon points="40,130 110,35 120,110" fill="#ede9fe" stroke="#6d28d9" stroke-width="2"/><polygon points="120,110 110,35 180,130" fill="#c4b5fd" stroke="#6d28d9" stroke-width="2"/><polygon points="100,150 110,35 180,130" fill="#a78bfa" stroke="#6d28d9" stroke-width="2" opacity="0.6"/><text x="60" y="165" font-size="12" fill="#475569">alas persegi • 4 sisi tegak segitiga</text></svg></div>
+<p>5 sisi (1 persegi + 4 segitiga), 8 rusuk, 5 titik sudut (1 titik puncak).</p><p><b>Contoh:</b> atap rumah limas, piramida, kemasan hadiah.</p></div>
+</div>
+<div class="tabel-scroll"><table>
+<tr><th>Bangun</th><th>Sisi</th><th>Rusuk</th><th>Titik sudut</th><th>Bentuk sisi</th></tr>
+<tr><td><b>Kubus</b></td><td>6</td><td>12</td><td>8</td><td>Persegi</td></tr>
+<tr><td><b>Balok</b></td><td>6</td><td>12</td><td>8</td><td>Persegi panjang</td></tr>
+<tr><td><b>Prisma segitiga</b></td><td>5</td><td>9</td><td>6</td><td>Segitiga + persegi panjang</td></tr>
+<tr><td><b>Prisma segiempat</b></td><td>6</td><td>12</td><td>8</td><td>Persegi/persegi panjang</td></tr>
+<tr><td><b>Limas segiempat</b></td><td>5</td><td>8</td><td>5</td><td>Persegi + segitiga</td></tr>
+<tr><td><b>Limas segitiga</b></td><td>4</td><td>6</td><td>4</td><td>Segitiga</td></tr>
+</table></div>
+</section>
+
+<section class="card" id="jaring"><h2>3. Jaring-Jaring — Bongkar, Lalu Lipat Lagi!</h2>
+<p><b>Jaring-jaring</b> adalah rangkaian bangun datar yang jika dilipat akan membentuk bangun ruang. Pilih bangunnya, ketuk tiap bagian jaring-jaring untuk melihat namanya, lalu tekan tombol untuk melihatnya sebagai bangun ruang.</p>
+<div class="tabs" role="tablist">
+<button class="tab-btn aktif" data-bangun="kubus">Kubus</button>
+<button class="tab-btn" data-bangun="balok">Balok</button>
+<button class="tab-btn" data-bangun="prisma">Prisma Segitiga</button>
+<button class="tab-btn" data-bangun="limas">Limas Segiempat</button>
+</div>
+<div class="svg-wrap" id="tampilanBangun"></div>
+<p style="text-align:center"><button class="btn hijau" id="btnTukarTampilan">🔄 Lihat sebagai bangun ruang</button></p>
+<p id="infoMuka" style="text-align:center"><b>Ketuk salah satu bagian jaring-jaring di atas</b> untuk melihat namanya.</p>
+<div class="kotak-soal"><p><b>Ciri jaring-jaring yang benar:</b></p>
+<ul><li>Jumlah sisinya tepat (kubus = 6 persegi, limas segiempat = 1 persegi + 4 segitiga).</li>
+<li>Saat dilipat tidak ada sisi yang bertumpuk (menutupi sisi lain) dan tidak ada sisi yang hilang.</li>
+<li>Enam persegi dalam satu baris lurus <b>bukan</b> jaring-jaring kubus — saat dilipat akan bertumpuk.</li></ul>
+<p><b>Aktivitas kelas:</b> salin jaring-jaring kubus di atas ke karton, gunting, lalu lipat. Apakah terbentuk kubus? Coba geser satu persegi ke posisi lain — apakah masih membentuk kubus?</p></div>
+</section>
+
+<section class="card" id="rumus"><h2>4. Rumus Luas Permukaan &amp; Volume</h2>
+<p><b>Luas permukaan</b> = jumlah luas semua sisi (berapa karton/kertas yang dibutuhkan). <b>Volume</b> = isi ruang di dalamnya (berapa banyak yang muat).</p>
+<div class="tabel-scroll"><table>
+<tr><th>Bangun</th><th>Luas Permukaan (L)</th><th>Volume (V)</th></tr>
+<tr><td><b>Kubus</b> (rusuk s)</td><td>L = 6 × s²</td><td>V = s³</td></tr>
+<tr><td><b>Balok</b> (p × l × t)</td><td>L = 2 × (p×l + p×t + l×t)</td><td>V = p × l × t</td></tr>
+<tr><td><b>Prisma</b></td><td>L = (2 × luas alas) + (keliling alas × tinggi prisma)</td><td>V = luas alas × tinggi prisma</td></tr>
+<tr><td><b>Limas</b></td><td>L = luas alas + jumlah luas sisi tegak</td><td>V = ⅓ × luas alas × tinggi limas</td></tr>
+</table></div>
+<h3>🧮 Kalkulator Interaktif — coba sendiri!</h3>
+<p>Pilih bangun, masukkan ukurannya, lalu tekan <b>Hitung</b>. Langkah pengerjaannya ditampilkan supaya kamu bisa menirunya di buku.</p>
+<div class="grid">
+<div><label for="kalkBangun">Bangun</label>
+<select id="kalkBangun"><option value="kubus">Kubus</option><option value="balok">Balok</option><option value="prisma">Prisma segitiga</option><option value="limas">Limas segiempat</option></select></div>
+<div id="kalkInput"></div>
+</div>
+<p><button class="btn" id="btnHitung">Hitung luas &amp; volume</button></p>
+<div id="kalkHasil" class="rumus" style="display:none"></div>
+<div class="kotak-soal"><p><b>Contoh yang sudah dihitung:</b></p>
+<p>Balok p = 8 cm, l = 5 cm, t = 4 cm.<br>L = 2 × (8×5 + 8×4 + 5×4) = 2 × (40 + 32 + 20) = 2 × 92 = <b>184 cm²</b>.<br>V = 8 × 5 × 4 = <b>160 cm³</b>.</p>
+<p>Limas segiempat, alas 6 cm × 6 cm, tinggi limas 9 cm.<br>V = ⅓ × 36 × 9 = <b>108 cm³</b>.</p></div>
+</section>
+
+<section class="card" id="sehari"><h2>5. Penerapan dalam Kehidupan Sehari-hari</h2>
+<div class="grid">
+<div class="card"><h3>🎁 Kotak Kado (Kubus)</h3><p>Kotak kado kubus dengan rusuk 20 cm. Kertas kado yang dibutuhkan = luas permukaan = 6 × 20² = <b>2.400 cm²</b>.</p><p class="kecil">Di toko, kertas kado dijual per lembar — hitung dulu luasnya supaya tidak kurang!</p></div>
+<div class="card"><h3>📦 Kardus Pindahan (Balok)</h3><p>Kardus 60 cm × 40 cm × 40 cm. Volumenya = 60 × 40 × 40 = <b>96.000 cm³</b>. Berapa buku yang muat? Bagi volume kardus dengan volume satu buku.</p></div>
+<div class="card"><h3>⛺ Tenda Pramuka (Prisma Segitiga)</h3><p>Alas tenda segitiga (alas 3 m, tinggi segitiga 2 m), panjang tenda 4 m. Volume udara di dalam tenda = (½ × 3 × 2) × 4 = <b>12 m³</b>.</p></div>
+<div class="card"><h3>🏠 Atap Rumah (Limas)</h3><p>Atap berbentuk limas segiempat. Genteng yang dibutuhkan dihitung dari luas sisi tegak (4 segitiga) — bukan dari volume atapnya.</p></div>
+<div class="card"><h3>🐠 Akuarium (Balok tanpa tutup)</h3><p>Akuarium tanpa tutup: luas kaca = luas alas + luas 4 sisi tegak saja (tutupnya tidak dihitung). Air yang muat = volume balok.</p></div>
+<div class="card"><h3>🍫 Kemasan Cokelat (Prisma Segitiga)</h3><p>Kemasan prisma segitiga menghemat karton dibanding kotak balok untuk isi yang sama — karena luas permukaannya lebih kecil.</p></div>
+</div>
+</section>
+
+<section class="card" id="lkpd"><h2>6. LKPD Digital — Kerjakan, Lalu Periksa</h2>
+<p>Isi identitas di atas dulu, lalu kerjakan LKPD 1–4. Setiap LKPD dinilai 0–100 dan otomatis masuk ke rekap. Jawaban angka boleh memakai koma desimal (contoh: 12,5) atau titik (12.5).</p>
+
+<div class="kotak-soal"><h3>LKPD 1 — Unsur &amp; Jaring-Jaring <span class="skor" id="skorL1"></span></h3>
+<label>1) Kubus memiliki berapa sisi? <input type="number" id="l1a" style="max-width:160px" placeholder="…"></label>
+<label>2) Limas segiempat memiliki berapa titik sudut? <input type="number" id="l1b" style="max-width:160px" placeholder="…"></label>
+<label>3) Prisma segitiga memiliki berapa rusuk? <input type="number" id="l1c" style="max-width:160px" placeholder="…"></label>
+<label>4) Sebuah jaring-jaring kubus terdiri dari berapa persegi? <input type="number" id="l1d" style="max-width:160px" placeholder="…"></label>
+<p><button class="btn" onclick="periksaLKPD(1)">Periksa LKPD 1</button></p><p id="hasilL1"></p></div>
+
+<div class="kotak-soal"><h3>LKPD 2 — Luas Permukaan Kubus &amp; Balok <span class="skor" id="skorL2"></span></h3>
+<label>1) Luas permukaan kubus dengan rusuk 5 cm = … cm² <input type="number" id="l2a" style="max-width:160px" placeholder="…"></label>
+<label>2) Luas permukaan balok p = 8 cm, l = 5 cm, t = 4 cm = … cm² <input type="number" id="l2b" style="max-width:160px" placeholder="…"></label>
+<label>3) Luas permukaan kubus dengan rusuk 10 cm = … cm² <input type="number" id="l2c" style="max-width:160px" placeholder="…"></label>
+<p><button class="btn" onclick="periksaLKPD(2)">Periksa LKPD 2</button></p><p id="hasilL2"></p></div>
+
+<div class="kotak-soal"><h3>LKPD 3 — Volume Prisma &amp; Limas <span class="skor" id="skorL3"></span></h3>
+<label>1) Volume balok 6 cm × 4 cm × 5 cm = … cm³ <input type="number" id="l3a" style="max-width:160px" placeholder="…"></label>
+<label>2) Prisma segitiga: alas segitiga 6 cm, tinggi segitiga 4 cm, tinggi prisma 10 cm. Volumenya = … cm³ <input type="number" id="l3b" style="max-width:160px" placeholder="…"></label>
+<label>3) Limas segiempat: alas 6 cm × 6 cm, tinggi limas 9 cm. Volumenya = … cm³ <input type="number" id="l3c" style="max-width:160px" placeholder="…"></label>
+<p><button class="btn" onclick="periksaLKPD(3)">Periksa LKPD 3</button></p><p id="hasilL3"></p></div>
+
+<div class="kotak-soal"><h3>LKPD 4 — Masalah Kontekstual <span class="skor" id="skorL4"></span></h3>
+<p><b>Soal 1 — Kotak kado.</b> Ibu membungkus kado dalam kotak kubus dengan rusuk 20 cm. Luas kertas kado yang dibutuhkan (tanpa lipatan lebih) adalah … cm²</p>
+<label>Jawaban soal 1 <input type="number" id="l4a" style="max-width:160px" placeholder="…"></label>
+<p><b>Soal 2 — Tenda.</b> Tenda pramuka berbentuk prisma segitiga. Alas segitiga 3 m, tinggi segitiga 2 m, panjang tenda 4 m. Volume udara di dalam tenda adalah … m³</p>
+<label>Jawaban soal 2 <input type="number" id="l4b" style="max-width:160px" placeholder="…"></label>
+<p><button class="btn" onclick="periksaLKPD(4)">Periksa LKPD 4</button></p><p id="hasilL4"></p></div>
+<p><b>Rata-rata LKPD:</b> <span class="skor" id="rataLKPD">—</span></p>
+</section>
+
+<section class="card" id="game"><h2>7. Game Interaktif — Main Sambil Belajar</h2>
+<p>Tiga permainan, masing-masing dinilai 0–100. Mainkan semuanya — skor game masuk ke rekap dan ekspor spreadsheet.</p>
+<div class="tabs">
+<button class="tab-btn aktif" data-game="A">🎯 A. Tebak Bangun</button>
+<button class="tab-btn" data-game="B">🧩 B. Jaring Benar / Salah</button>
+<button class="tab-btn" data-game="C">⚡ C. Hitung Cepat</button>
+</div>
+<div id="arenaGame"></div>
+<p><b>Skor game:</b> A <span class="skor" id="skorGA">—</span> • B <span class="skor" id="skorGB">—</span> • C <span class="skor" id="skorGC">—</span> • Rata-rata game: <span class="skor" id="rataGame">—</span></p>
+</section>
+
+<section class="card" id="kuis"><h2>8. Kuis Cepat — 5 Soal</h2>
+<p>Pilih satu jawaban untuk setiap soal, lalu tekan <b>Lihat Skor</b>.</p>
+<div id="daftarKuis"></div>
+<p><button class="btn" onclick="periksaKuis()">Lihat Skor Kuis</button></p>
+<p id="hasilKuis"></p>
+<p><b>Skor kuis:</b> <span class="skor" id="skorKuis">—</span></p>
+</section>
+
+<section class="card"><h2>Refleksi</h2>
+<p>Tulis satu kalimat: <i>“Hari ini saya paling paham tentang … dan masih bingung tentang …”</i></p>
+<textarea id="refleksi" rows="3" placeholder="Tulis refleksimu di sini…"></textarea>
+<p class="kecil">Refleksi ikut tersimpan saat kamu menekan “Simpan Hasil Saya” di bagian 9.</p>
+</section>
+
+<section class="card kuning" id="rekap"><h2>9. Rekap &amp; Ekspor ke Spreadsheet 📊</h2>
+<p>Semua skor (LKPD 1–4, Game A–C, Kuis) dirangkum di sini. <b>Di kelas dengan PID:</b> setiap siswa mengerjakan di perangkat yang sama, lalu menekan <b>Simpan Hasil Saya</b> sebelum ganti siswa. Di akhir pelajaran guru mengekspor rekap satu kelas sekaligus.</p>
+<div class="tabel-scroll"><table>
+<tr><th>Komponen</th><th>Skor</th><th>Komponen</th><th>Skor</th></tr>
+<tr><td>Rata-rata LKPD (1–4)</td><td id="rekLKPD">—</td><td>Rata-rata Game (A–C)</td><td id="rekGame">—</td></tr>
+<tr><td>Kuis (5 soal)</td><td id="rekKuis">—</td><td><b>Nilai Akhir</b></td><td id="rekAkhir"><b>—</b></td></tr>
+<tr><td>Predikat</td><td id="rekPredikat">—</td><td>Tanggal</td><td id="rekTanggal">—</td></tr>
+</table></div>
+<div class="progress"><div id="barNilai"></div></div>
+<p>
+<button class="btn hijau" onclick="simpanHasil()">💾 Simpan Hasil Saya</button>
+<button class="btn" onclick="eksporHasilSayaXLSX()">📥 Ekspor Hasil Saya (.xlsx)</button>
+<button class="btn" onclick="eksporHasilSayaCSV()">📥 Ekspor Hasil Saya (.csv)</button>
+</p>
+<p>
+<button class="btn ungu" onclick="eksporRekapKelasXLSX()">📥 Ekspor Rekap Kelas (.xlsx)</button>
+<button class="btn" onclick="eksporTemplateXLSX()">📥 Unduh Template Rekap Kosong (.xlsx)</button>
+<button class="btn abu" onclick="hapusRekap()">🗑 Hapus Rekap di Perangkat Ini</button>
+</p>
+<p id="pesanRekap" class="kecil"></p>
+<h3>Rekap tersimpan di perangkat ini</h3>
+<div class="tabel-scroll"><table id="tabelRekap">
+<tr><th>No</th><th>NISN/NIS</th><th>Kelas</th><th>Nama</th><th>LKPD 1</th><th>LKPD 2</th><th>LKPD 3</th><th>LKPD 4</th><th>Game A</th><th>Game B</th><th>Game C</th><th>Kuis</th><th>Nilai Akhir</th><th>Predikat</th><th>Tanggal</th></tr>
+<tr id="barisKosong"><td colspan="15">Belum ada hasil tersimpan. Kerjakan LKPD / game / kuis, lalu tekan “Simpan Hasil Saya”.</td></tr>
+</table></div>
+<p class="kecil"><b>Format kolom ekspor mengikuti file ABSEN yang dilampirkan guru:</b> NO, NISN/NIS, KELAS, NAMA — ditambah kolom skor LKPD 1–4, Game A–C, Kuis, Nilai Akhir, dan Predikat. File .xlsx berisi 2 lembar: <b>Rekap</b> dan <b>Rincian Jawaban</b>. File .csv memakai pemisah titik koma (;) supaya langsung rapi saat dibuka di Excel Indonesia.</p>
+</section>
+
+<section class="card guru" id="guru"><h2>Untuk Guru — Panduan &amp; Kunci</h2>
+<details><summary><b>Panduan singkat (Pembelajaran Mendalam: Berkesadaran – Bermakna – Menggembirakan)</b></summary>
+<p><b>Berkesadaran:</b> mulai dari benda nyata (kardus, kotak kado, tenda). Minta siswa menebak sebelum rumus dikenalkan. <b>Bermakna:</b> tekankan jaring-jaring sebagai “peta” luas permukaan — luas permukaan adalah jumlah luas semua sisi pada jaring-jaring. <b>Menggembirakan:</b> game Tebak Bangun dan Hitung Cepat dipakai sebagai selingan menantang; minta siswa menjelaskan alasan jawabannya, bukan sekadar menebak.</p>
+<p><b>Alokasi (ATP):</b> G.5 jaring-jaring 6 JP + P.1 luas permukaan dan volume 12 JP = 18 JP (6 pertemuan @ 3 JP, 1 JP = 40 menit). <b>Di PID:</b> tampilkan bagian 2–4 untuk penjelasan klasikal; siswa mengerjakan LKPD di HP/laptop masing-masing atau bergiliran di PID. <b>Offline:</b> file ini berdiri sendiri — salin lewat flashdisk/Bluetooth ke HP, laptop, atau PID, lalu klik dua kali. Tidak butuh internet dan tidak butuh server.</p></details>
+<details><summary><b>Kunci LKPD</b></summary>
+<p>LKPD 1: 6 sisi; 5 titik sudut; 9 rusuk; 6 persegi. LKPD 2: 150 cm²; 184 cm²; 600 cm². LKPD 3: 120 cm³; 120 cm³; 108 cm³. LKPD 4: 2.400 cm²; 12 m³.</p></details>
+<details><summary><b>Kunci game &amp; kuis</b></summary>
+<p>Game A: Kubus; Prisma segitiga; Limas segiempat; Balok; Kubus; Prisma segitiga. Game B: Benar, Salah, Salah, Benar, Salah, Benar. Kuis: 96 cm²; 30 cm³; 8 rusuk; 72 cm³; 120 cm³.</p></details>
+<details><summary><b>Miskonsepsi yang sering muncul</b></summary>
+<p>Siswa mengira luas permukaan = volume; tekankan satuan (cm² vs cm³) dan arti fisisnya (kertas pembungkus vs isi). Siswa lupa mengalikan 2 pada sisi berpasangan pada balok. Pada limas, siswa memakai tinggi sisi tegak sebagai tinggi limas — bedakan tinggi limas (tegak lurus alas ke puncak) dengan tinggi segitiga sisi tegak. Pada jaring-jaring, siswa mengira semua rangkaian 6 persegi bisa dilipat menjadi kubus.</p></details>
+<details><summary><b>Cara mengumpulkan nilai</b></summary>
+<p>1) Siswa mengisi identitas (kelas + nama dari absen). 2) Setelah mengerjakan, siswa menekan “Simpan Hasil Saya”. 3) Di akhir jam, guru menekan “Ekspor Rekap Kelas (.xlsx)” — file berisi semua siswa yang tersimpan di perangkat itu, dengan kolom NO, NISN/NIS, KELAS, NAMA sesuai ABSEN. 4) Jika siswa mengerjakan di HP masing-masing, tiap siswa mengekspor “Hasil Saya (.xlsx)” dan mengirimkannya ke guru.</p></details>
+</section>
+</main>
+<footer>MPI Matematika SMP • Kurikulum Merdeka • Pembelajaran Mendalam • Bangun Ruang Sisi Datar — Kelas 9 Semester 1 (G.5, P.1) • Acuan ATP MGMP Matematika SMP Kab. Lampung Tengah, Fase D, 2026/2027</footer>
+<script>
+"use strict";
+var DATA_SISWA = {"9A": [{"no": 1, "nis": "0119399697 / 11805", "kelas": "9A", "nama": "AHMAD SATRIA HALIFIAN"}, {"no": 2, "nis": "0113173349 / 11801", "kelas": "9A", "nama": "AKHMAD KHUSEN GHOZALI"}, {"no": 3, "nis": "0121800789 / 11799", "kelas": "9A", "nama": "ALFINA KAYLA SYAKIRA"}, {"no": 4, "nis": "0114819782 / 11798", "kelas": "9A", "nama": "ALFINDHO DZUN NUR'AIN"}, {"no": 5, "nis": "0118765047 / 11804", "kelas": "9A", "nama": "AMABEL DAMARA WIRASTARI"}, {"no": 6, "nis": "0123052346 / 11802", "kelas": "9A", "nama": "ARIA GANTANG ATMA WIYADI"}, {"no": 7, "nis": "0113255302 / 11806", "kelas": "9A", "nama": "ARIF FADILLA RAFI'I"}, {"no": 8, "nis": "0115700578 / 11797", "kelas": "9A", "nama": "ARIF LUKMAN HAKIM"}, {"no": 9, "nis": "0126875757 / 11803", "kelas": "9A", "nama": "ASYRAF ATHA FAIRUZ"}, {"no": 10, "nis": "0122039545 / 11800", "kelas": "9A", "nama": "AZRIEL IMRAL IBRAHIM"}, {"no": 11, "nis": "0114296808 / 11807", "kelas": "9A", "nama": "BISMA BAGASTIAN"}, {"no": 12, "nis": "0125539397 / 11808", "kelas": "9A", "nama": "DALI AFWAN SYUKRI"}, {"no": 13, "nis": "0111095904 / 11809", "kelas": "9A", "nama": "DENMOKO YUSRAN MAHIB"}, {"no": 14, "nis": "0114489445 / 11810", "kelas": "9A", "nama": "DREAN ZAHRI UNIDA"}, {"no": 15, "nis": "0118401068 /", "kelas": "9A", "nama": "EKA ARUMI"}, {"no": 16, "nis": "0123597908 / 11811", "kelas": "9A", "nama": "ESTER ELYSIA"}, {"no": 17, "nis": "0125499875 / 11812", "kelas": "9A", "nama": "FEBRI ARDIARKA PUTRA"}, {"no": 18, "nis": "0127220954 / 11813", "kelas": "9A", "nama": "HANIF PRAYOGI"}, {"no": 19, "nis": "0116553560 / 11814", "kelas": "9A", "nama": "INNEKE ALYA KAMALIN"}, {"no": 20, "nis": "0112155309 / 11815", "kelas": "9A", "nama": "KHAIRANI NADIA AYLAKIVA"}, {"no": 21, "nis": "0111399370 / 11816", "kelas": "9A", "nama": "LAILILA AINA SYAR'I"}, {"no": 22, "nis": "0128506799 / 11818", "kelas": "9A", "nama": "MALYA ADIVA PRATAMA"}, {"no": 23, "nis": "0116886805 / 11820", "kelas": "9A", "nama": "MOCHAMMAD AGUNG PRAYOGI"}, {"no": 24, "nis": "0119186563 / 11817", "kelas": "9A", "nama": "MUHAMMAD RASYA KURNIAWAN"}, {"no": 25, "nis": "0114177519 / 11824", "kelas": "9A", "nama": "NADIRA SAIDA ASROR"}, {"no": 26, "nis": "0112269678 / 12364", "kelas": "9A", "nama": "NAZELIA MARTHA TRILOVA"}, {"no": 27, "nis": "0129350678 / 11821", "kelas": "9A", "nama": "NAZWA KAMILA PUTRI"}, {"no": 28, "nis": "0114074319 / 11822", "kelas": "9A", "nama": "NEYSA RYVI QUEEN OCTA"}, {"no": 29, "nis": "0129845217 / 11826", "kelas": "9A", "nama": "RAEHAN AL FARIZKI"}, {"no": 30, "nis": "0112074407 / 11825", "kelas": "9A", "nama": "RAFFASYA ALIFIA PUTRA"}, {"no": 31, "nis": "0112278696 / 11828", "kelas": "9A", "nama": "SHAKILA AULIA MAHISWARA"}, {"no": 32, "nis": "0112905018 / 11827", "kelas": "9A", "nama": "SILFI AQILA"}, {"no": 33, "nis": "0115133440 / 11829", "kelas": "9A", "nama": "ZEFANYA STEPHANIE FREDERICA"}, {"no": 34, "nis": "0113149666 / 11830", "kelas": "9A", "nama": "ZHAQIATUL FITRIYAH"}], "9B": [{"no": 1, "nis": "0119328080 / 11831", "kelas": "9B", "nama": "A. KHOIRUNNIZAM AL FAQIH"}, {"no": 2, "nis": "0113783015 / 11832", "kelas": "9B", "nama": "ADOLF BERILOS SILALAHI"}, {"no": 3, "nis": "0122816884 / 11833", "kelas": "9B", "nama": "AHMAD ALFARO"}, {"no": 4, "nis": "0124335623 / 11834", "kelas": "9B", "nama": "AHMAD JORDAN TYO"}, {"no": 5, "nis": "0114163080 / 11835", "kelas": "9B", "nama": "AHMAT FIZAL AJISKI"}, {"no": 6, "nis": "3117794004 / 11836", "kelas": "9B", "nama": "ALDO SETO PRAYOGA"}, {"no": 7, "nis": "0125935528 / 11837", "kelas": "9B", "nama": "ALIF AHMAD NUREYZA"}, {"no": 8, "nis": "0112378257 / 11838", "kelas": "9B", "nama": "ARSYA IBNU FAREZI"}, {"no": 9, "nis": "0113689673 / 11839", "kelas": "9B", "nama": "ASQIA INDAROSA"}, {"no": 10, "nis": "0129784465 / 11840", "kelas": "9B", "nama": "ASYIFAPUTRI NUR AINI"}, {"no": 11, "nis": "0116882856 / 11841", "kelas": "9B", "nama": "AVRIZA DAFFA AL HAFIZH"}, {"no": 12, "nis": "0113940655 / 11842", "kelas": "9B", "nama": "CAMELLIA NIRWANA"}, {"no": 13, "nis": "0122521401 / 11843", "kelas": "9B", "nama": "DEDE AMAR MA'RUF"}, {"no": 14, "nis": "0119416880 / 11844", "kelas": "9B", "nama": "DIONISIUS REVANO ADHITAMA"}, {"no": 15, "nis": "3111521864 / 11845", "kelas": "9B", "nama": "DZAKI ARKANA FAHRUR"}, {"no": 16, "nis": "3124211082 / 11846", "kelas": "9B", "nama": "FATHUR TRI HIZAZI"}, {"no": 17, "nis": "0116136988 / 11847", "kelas": "9B", "nama": "FAZA RAJA ALFARIZI"}, {"no": 18, "nis": "0112364902 / 11848", "kelas": "9B", "nama": "FRANANDA RADITYA ALFAHREZI"}, {"no": 19, "nis": "0117220899 / 11849", "kelas": "9B", "nama": "IBRA YAZID ANANTA"}, {"no": 20, "nis": "0127398420 / 11850", "kelas": "9B", "nama": "IFRA MIKAYLA"}, {"no": 21, "nis": "0111014683 / 11851", "kelas": "9B", "nama": "JUWANDA RAHMAWATI"}, {"no": 22, "nis": "0127432931 / 11852", "kelas": "9B", "nama": "LEVI FIRDA AL ZHENA"}, {"no": 23, "nis": "0122894554 / 11853", "kelas": "9B", "nama": "MELA DWI ALIANA"}, {"no": 24, "nis": "0119659817 / 11854", "kelas": "9B", "nama": "MUHAMMAD ABDILLAH"}, {"no": 25, "nis": "0119159266 / 11855", "kelas": "9B", "nama": "MUZAYYANA"}, {"no": 26, "nis": "0124310434 / 11856", "kelas": "9B", "nama": "NAUFAL ADHI YASTHA"}, {"no": 27, "nis": "0116053691 / 11857", "kelas": "9B", "nama": "NAYLA SHANIKA RIFAYA"}, {"no": 28, "nis": "0126118060 / 11858", "kelas": "9B", "nama": "NOVITA HERLINA"}, {"no": 29, "nis": "3129364392 / 11859", "kelas": "9B", "nama": "NURUL IKHA APRILIANA"}, {"no": 30, "nis": "0126433129 / 11860", "kelas": "9B", "nama": "RIZKI SAPUTRA PRATAMA"}, {"no": 31, "nis": "0114944899 / 11861", "kelas": "9B", "nama": "SABILA ZULFAH"}, {"no": 32, "nis": "0117749467 / 11862", "kelas": "9B", "nama": "VIVI AYU FITRIYANI"}, {"no": 33, "nis": "3125721034 / 11863", "kelas": "9B", "nama": "ZAQILLA ADZKIA SABRINA"}, {"no": 34, "nis": "0112768686 / 11864", "kelas": "9B", "nama": "ZARA ALMIRA SHODIQ"}], "9C": [{"no": 1, "nis": "0127961328 / 11865", "kelas": "9C", "nama": "ADIYA LUTFIA AMELIA"}, {"no": 2, "nis": "0115586187 / 11866", "kelas": "9C", "nama": "ALIF ADYTIYA PRASSETYO"}, {"no": 3, "nis": "0126632058 / 11867", "kelas": "9C", "nama": "ALVINA DAMAI YANTI"}, {"no": 4, "nis": "0112168160 / 11868", "kelas": "9C", "nama": "ALYA SEFLYANA RAHMA"}, {"no": 5, "nis": "0124654401 / 11869", "kelas": "9C", "nama": "AMELIA CONCHITA AGUSTINA"}, {"no": 6, "nis": "0123438570 / 11870", "kelas": "9C", "nama": "ANDIN PUTRI SETIADI"}, {"no": 7, "nis": "0115314721 / 11871", "kelas": "9C", "nama": "ANDRE ADI SAPUTRA"}, {"no": 8, "nis": "3115544341 / 11872", "kelas": "9C", "nama": "AYU RAHMA WATI"}, {"no": 9, "nis": "0113996500 / 11874", "kelas": "9C", "nama": "AZWHA AULIA ANANDAKU"}, {"no": 10, "nis": "0127580068 / 11875", "kelas": "9C", "nama": "AZZAM REIVANA YUNANDAR"}, {"no": 11, "nis": "0124233570 / 11876", "kelas": "9C", "nama": "BINTANG NUR FAIZ"}, {"no": 12, "nis": "0114756056 / 11877", "kelas": "9C", "nama": "BRILY VARENDRA HERMA ADITYA"}, {"no": 13, "nis": "0118364174 / 11878", "kelas": "9C", "nama": "DARMA KURNIAWAN"}, {"no": 14, "nis": "0117579289 / 11879", "kelas": "9C", "nama": "DESTA FADLI SAPUTRA"}, {"no": 15, "nis": "0118515554 / 11880", "kelas": "9C", "nama": "DESTA MULKI FAHRUDIN"}, {"no": 16, "nis": "0111642147 / 11881", "kelas": "9C", "nama": "ECHIKA VANDANNESIYA PUTRI"}, {"no": 17, "nis": "0124094496 / 11882", "kelas": "9C", "nama": "EVA TIARA MELATI"}, {"no": 18, "nis": "0127545031 / 11884", "kelas": "9C", "nama": "FADHIL AHMAD JOVAN"}, {"no": 19, "nis": "0111020029 / 11883", "kelas": "9C", "nama": "FADLY ABIZAR MUHAMMAD ARIF"}, {"no": 20, "nis": "0112646518 / 11885", "kelas": "9C", "nama": "HAIKAL DAUD FATAHILLAH"}, {"no": 21, "nis": "0118357655 / 11886", "kelas": "9C", "nama": "HASYA ALFIYAN"}, {"no": 22, "nis": "0111525723 / 11887", "kelas": "9C", "nama": "LULU ANNISA RAMADHANI"}, {"no": 23, "nis": "0124908529 / 11888", "kelas": "9C", "nama": "NAYSHILA KHALIFAH"}, {"no": 24, "nis": "0113192349 / 11889", "kelas": "9C", "nama": "NOVITA PUTRI AYU NINGTIAS"}, {"no": 25, "nis": "0121479223 / 11890", "kelas": "9C", "nama": "NUR AINI"}, {"no": 26, "nis": "3113271621 / 11891", "kelas": "9C", "nama": "RAIHAN AGUNG PRASTYO"}, {"no": 27, "nis": "0126345585 / 11892", "kelas": "9C", "nama": "RIZKY ADITIA"}, {"no": 28, "nis": "0127626155 / 11893", "kelas": "9C", "nama": "ROKHISH ADZQIYA"}, {"no": 29, "nis": "0117245837 / 11897", "kelas": "9C", "nama": "SABINA MEYSYAH AMIN"}, {"no": 30, "nis": "0124794046 / 12358", "kelas": "9C", "nama": "SAPUTRA FAUZAN FADILLAH"}, {"no": 31, "nis": "0114388274 / 11895", "kelas": "9C", "nama": "SENDY FAHREZA"}, {"no": 32, "nis": "0127456453 / 11894", "kelas": "9C", "nama": "SENJA RAMADHANI"}, {"no": 33, "nis": "0118875767 / 11896", "kelas": "9C", "nama": "SYLVIA AURA NATASYA"}, {"no": 34, "nis": "0113591047 / 11898", "kelas": "9C", "nama": "YUDA MAULANA"}], "9D": [{"no": 1, "nis": "0118445963 / 11899", "kelas": "9D", "nama": "ABID ALFHANI"}, {"no": 2, "nis": "0112244489 / 11900", "kelas": "9D", "nama": "ABIGHAIL ROFIQ HARIRI"}, {"no": 3, "nis": "0115241972 / 11901", "kelas": "9D", "nama": "AMELIA RAHMA PUTRI"}, {"no": 4, "nis": "0121416072 / 11902", "kelas": "9D", "nama": "ARDIONA NADIRA HAYFA"}, {"no": 5, "nis": "0114120198 / 11903", "kelas": "9D", "nama": "ARIS TRIJUNIA VITO"}, {"no": 6, "nis": "0103537340 / 11904", "kelas": "9D", "nama": "DAVIT DWI ANDIKA"}, {"no": 7, "nis": "0114869955 / 11905", "kelas": "9D", "nama": "DESINTA PUTRI ANJANI"}, {"no": 8, "nis": "0111669733 / 11906", "kelas": "9D", "nama": "DHIYANT PRATAMA"}, {"no": 9, "nis": "0115754581 / 11907", "kelas": "9D", "nama": "EMBUN AFIKIN"}, {"no": 10, "nis": "0119308726 / 11908", "kelas": "9D", "nama": "FALA PRADITA UTAMA"}, {"no": 11, "nis": "0111199017 / 11909", "kelas": "9D", "nama": "FATHIR AL-BAQI"}, {"no": 12, "nis": "0115335605 / 11910", "kelas": "9D", "nama": "FHIKA SAFITRI"}, {"no": 13, "nis": "0112751731 / 11911", "kelas": "9D", "nama": "FURQON MIZANI"}, {"no": 14, "nis": "0119194688 / 11912", "kelas": "9D", "nama": "GARA ARMEGA"}, {"no": 15, "nis": "3128309400 / 11913", "kelas": "9D", "nama": "HANA MAR'ATUS SHOLEHAH"}, {"no": 16, "nis": "0118036030 / 11914", "kelas": "9D", "nama": "LUTHFI ASYADIL ANAM"}, {"no": 17, "nis": "0121177240 / 11915", "kelas": "9D", "nama": "MAHENDRA SAMPURNA JAYA"}, {"no": 18, "nis": "0128369381 / 11916", "kelas": "9D", "nama": "MAISARAH ALANA KAYLANI"}, {"no": 19, "nis": "0112864843 / 11917", "kelas": "9D", "nama": "MAR'ATUS SHOLEHA"}, {"no": 20, "nis": "0127378566 / 11918", "kelas": "9D", "nama": "MELISA RAMADHANI"}, {"no": 21, "nis": "0124877321 / 11919", "kelas": "9D", "nama": "MUHAMAT NIJAM AL FAQIH"}, {"no": 22, "nis": "0122710130 / 11920", "kelas": "9D", "nama": "NAYLA AZZAHRA"}, {"no": 23, "nis": "0123267329 / 11921", "kelas": "9D", "nama": "NUR AMANAH"}, {"no": 24, "nis": "0118701591 / 11922", "kelas": "9D", "nama": "RAFA DWI RAMADHAN"}, {"no": 25, "nis": "0111562289 / 11923", "kelas": "9D", "nama": "RAFKA AL QIFAHRI"}, {"no": 26, "nis": "0123667802 / 11924", "kelas": "9D", "nama": "RANGGA ZUNIANTO"}, {"no": 27, "nis": "0125596668 / 11925", "kelas": "9D", "nama": "RAYSA SABRINA"}, {"no": 28, "nis": "0126722872 / 11926", "kelas": "9D", "nama": "SALSABILA"}, {"no": 29, "nis": "0124426111 / 11927", "kelas": "9D", "nama": "SENDI ANANDA"}, {"no": 30, "nis": "0128363938 / 11928", "kelas": "9D", "nama": "SHIFA APRILIA"}, {"no": 31, "nis": "0128930156 / 11929", "kelas": "9D", "nama": "SITI NUR AISAH"}, {"no": 32, "nis": "0121901915 / 11930", "kelas": "9D", "nama": "TIARA MELISA MAHARANI"}, {"no": 33, "nis": "0115225294 / 11931", "kelas": "9D", "nama": "VYONIE LOVELY IRAWAN"}, {"no": 34, "nis": "0129293506 / 11932", "kelas": "9D", "nama": "YOVIE ALVARO"}]};
+var SISWA = (typeof DATA_SISWA !== "undefined") ? DATA_SISWA : {"9A":[],"9B":[],"9C":[],"9D":[]};
+var nilai = {lkpd1:null, lkpd2:null, lkpd3:null, lkpd4:null, gameA:null, gameB:null, gameC:null, kuis:null};
+var rincian = {lkpd:{}, game:{}, kuis:[]};
+function $(id){ return document.getElementById(id); }
+function escXml(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
+function angka(v){ if(v===null||v===undefined||v==="") return null; var n = parseFloat(String(v).replace(",",".")); return isNaN(n)?null:n; }
+function dekat(a,b){ return a!==null && Math.abs(a-b) < 0.001; }
+function bulat(n){ return Math.round(n*100)/100; }
+function hariIni(){ try{ return new Date().toLocaleDateString("id-ID",{weekday:"long",day:"numeric",month:"long",year:"numeric"}); }catch(e){ return new Date().toLocaleDateString(); } }
+function tglSingkat(){ var d=new Date(); function p(n){ return (n<10?"0":"")+n; } return d.getFullYear()+"-"+p(d.getMonth()+1)+"-"+p(d.getDate()); }
+$("tanggalHari").textContent = hariIni();
+$("rekTanggal").textContent = tglSingkat();
+
+/* ---------- Identitas ---------- */
+$("kelasSelect").addEventListener("change", function(){
+  var k = this.value, sel = $("namaSelect");
+  sel.innerHTML = "";
+  if(!k){ sel.innerHTML = "<option value=''>— Pilih kelas dulu —</option>"; $("noSiswa").value=""; $("nisSiswa").value=""; return; }
+  var opt0 = document.createElement("option"); opt0.value=""; opt0.textContent="— Pilih nama —"; sel.appendChild(opt0);
+  (SISWA[k]||[]).forEach(function(s){
+    var o=document.createElement("option"); o.value=s.nis; o.textContent=s.no+". "+s.nama; o.setAttribute("data-no",s.no); o.setAttribute("data-nama",s.nama); sel.appendChild(o);
+  });
+  var om=document.createElement("option"); om.value="__manual__"; om.textContent="— Nama lain (ketik manual) —"; sel.appendChild(om);
+  $("noSiswa").value=""; $("nisSiswa").value=""; $("namaManualWrap").style.display="none";
+});
+$("namaSelect").addEventListener("change", function(){
+  var o = this.options[this.selectedIndex];
+  if(!o || !o.value){ $("noSiswa").value=""; $("nisSiswa").value=""; $("namaManualWrap").style.display="none"; return; }
+  if(o.value==="__manual__"){ $("noSiswa").value="-"; $("nisSiswa").value="-"; $("namaManualWrap").style.display="block"; $("identitasInfo").textContent="Nama manual: isi nama lengkap di bawah."; return; }
+  $("namaManualWrap").style.display="none";
+  $("noSiswa").value = o.getAttribute("data-no")||"";
+  $("nisSiswa").value = o.value||"";
+  $("identitasInfo").textContent = "Terpilih: "+(o.getAttribute("data-nama")||"")+" — Kelas "+$("kelasSelect").value+".";
+});
+function identitasSiswa(){
+  var k = $("kelasSelect").value;
+  var sel = $("namaSelect");
+  var o = sel.options[sel.selectedIndex];
+  if(!k || !o || !o.value) return null;
+  if(o.value==="__manual__"){
+    var nm = $("namaManual").value.trim();
+    if(!nm) return null;
+    return {no:"-", nis:"-", kelas:k, nama:nm.toUpperCase()};
+  }
+  return {no:o.getAttribute("data-no")||"", nis:o.value, kelas:k, nama:o.getAttribute("data-nama")||""};
+}
+
+/* ---------- Jaring-jaring interaktif ---------- */
+var NETS = {
+  kubus: {nama:"Kubus", net:
+    '<svg viewBox="0 0 360 220" width="360" height="220" role="img" aria-label="Jaring-jaring kubus">'+
+    '<rect class="muka" data-info="Tutup — persegi, sisi atas kubus." x="86" y="10" width="52" height="52" fill="#bfdbfe" stroke="#0b5fa5" stroke-width="2"/>'+
+    '<rect class="muka" data-info="Sisi kiri — persegi." x="34" y="62" width="52" height="52" fill="#dbeafe" stroke="#0b5fa5" stroke-width="2"/>'+
+    '<rect class="muka" data-info="Sisi depan — persegi." x="86" y="62" width="52" height="52" fill="#93c5fd" stroke="#0b5fa5" stroke-width="2"/>'+
+    '<rect class="muka" data-info="Sisi kanan — persegi." x="138" y="62" width="52" height="52" fill="#dbeafe" stroke="#0b5fa5" stroke-width="2"/>'+
+    '<rect class="muka" data-info="Sisi belakang — persegi." x="190" y="62" width="52" height="52" fill="#bfdbfe" stroke="#0b5fa5" stroke-width="2"/>'+
+    '<rect class="muka" data-info="Alas — persegi, sisi bawah kubus." x="86" y="114" width="52" height="52" fill="#93c5fd" stroke="#0b5fa5" stroke-width="2"/>'+
+    '<text x="180" y="200" font-size="13" fill="#475569">6 persegi — lipat ke atas menjadi kubus</text></svg>',
+    solid:
+    '<svg viewBox="0 0 200 170" width="220" height="187" role="img" aria-label="Kubus terlipat"><polygon points="40,70 120,70 120,150 40,150" fill="#bfdbfe" stroke="#0b5fa5" stroke-width="2"/><polygon points="40,70 70,40 150,40 120,70" fill="#dbeafe" stroke="#0b5fa5" stroke-width="2"/><polygon points="120,70 150,40 150,120 120,150" fill="#93c5fd" stroke="#0b5fa5" stroke-width="2"/><text x="55" y="165" font-size="13" fill="#475569">Kubus — 6 sisi persegi</text></svg>'},
+  balok: {nama:"Balok", net:
+    '<svg viewBox="0 0 360 230" width="360" height="230" role="img" aria-label="Jaring-jaring balok">'+
+    '<rect class="muka" data-info="Tutup (p × l) — persegi panjang atas." x="70" y="15" width="110" height="60" fill="#bbf7d0" stroke="#0e9a6b" stroke-width="2"/>'+
+    '<rect class="muka" data-info="Sisi kiri (l × t) — persegi panjang." x="0" y="75" width="70" height="45" fill="#dcfce7" stroke="#0e9a6b" stroke-width="2"/>'+
+    '<rect class="muka" data-info="Sisi depan (p × t) — persegi panjang." x="70" y="75" width="110" height="45" fill="#86efac" stroke="#0e9a6b" stroke-width="2"/>'+
+    '<rect class="muka" data-info="Sisi kanan (l × t) — persegi panjang." x="180" y="75" width="70" height="45" fill="#dcfce7" stroke="#0e9a6b" stroke-width="2"/>'+
+    '<rect class="muka" data-info="Sisi belakang (p × t) — persegi panjang." x="250" y="75" width="110" height="45" fill="#bbf7d0" stroke="#0e9a6b" stroke-width="2"/>'+
+    '<rect class="muka" data-info="Alas (p × l) — persegi panjang bawah." x="70" y="120" width="110" height="60" fill="#86efac" stroke="#0e9a6b" stroke-width="2"/>'+
+    '<text x="180" y="205" font-size="13" fill="#475569">3 pasang persegi panjang yang sama</text></svg>',
+    solid:
+    '<svg viewBox="0 0 220 170" width="240" height="186" role="img" aria-label="Balok terlipat"><polygon points="30,80 150,80 150,150 30,150" fill="#bbf7d0" stroke="#0e9a6b" stroke-width="2"/><polygon points="30,80 60,50 180,50 150,80" fill="#dcfce7" stroke="#0e9a6b" stroke-width="2"/><polygon points="150,80 180,50 180,120 150,150" fill="#86efac" stroke="#0e9a6b" stroke-width="2"/><text x="55" y="165" font-size="13" fill="#475569">Balok — 6 sisi persegi panjang</text></svg>'},
+  prisma: {nama:"Prisma Segitiga", net:
+    '<svg viewBox="0 0 320 240" width="320" height="240" role="img" aria-label="Jaring-jaring prisma segitiga">'+
+    '<polygon class="muka" data-info="Alas segitiga — salah satu dari 2 sisi segitiga." points="90,80 160,80 125,30" fill="#fde68a" stroke="#b45309" stroke-width="2"/>'+
+    '<rect class="muka" data-info="Sisi tegak 1 — persegi panjang." x="20" y="80" width="70" height="50" fill="#fef3c7" stroke="#b45309" stroke-width="2"/>'+
+    '<rect class="muka" data-info="Sisi tegak 2 — persegi panjang (menempel alas segitiga)." x="90" y="80" width="70" height="50" fill="#fcd34d" stroke="#b45309" stroke-width="2"/>'+
+    '<rect class="muka" data-info="Sisi tegak 3 — persegi panjang." x="160" y="80" width="70" height="50" fill="#fef3c7" stroke="#b45309" stroke-width="2"/>'+
+    '<polygon class="muka" data-info="Tutup segitiga — sisi segitiga kedua." points="90,130 160,130 125,180" fill="#fde68a" stroke="#b45309" stroke-width="2"/>'+
+    '<text x="160" y="210" font-size="13" fill="#475569">2 segitiga + 3 persegi panjang</text></svg>',
+    solid:
+    '<svg viewBox="0 0 220 170" width="240" height="186" role="img" aria-label="Prisma segitiga terlipat"><polygon points="40,140 110,60 110,140" fill="#fde68a" stroke="#b45309" stroke-width="2"/><polygon points="110,60 180,60 180,140 110,140" fill="#fef3c7" stroke="#b45309" stroke-width="2"/><polygon points="110,60 180,60 110,140" fill="#fcd34d" stroke="#b45309" stroke-width="2" opacity="0.55"/><text x="40" y="165" font-size="13" fill="#475569">Prisma segitiga — 5 sisi</text></svg>'},
+  limas: {nama:"Limas Segiempat", net:
+    '<svg viewBox="0 0 320 250" width="320" height="250" role="img" aria-label="Jaring-jaring limas segiempat">'+
+    '<polygon class="muka" data-info="Sisi tegak atas — segitiga." points="125,90 195,90 160,30" fill="#ede9fe" stroke="#6d28d9" stroke-width="2"/>'+
+    '<polygon class="muka" data-info="Sisi tegak kiri — segitiga." points="125,90 125,160 65,125" fill="#ddd6fe" stroke="#6d28d9" stroke-width="2"/>'+
+    '<rect class="muka" data-info="Alas — persegi, tempat limas berdiri." x="125" y="90" width="70" height="70" fill="#c4b5fd" stroke="#6d28d9" stroke-width="2"/>'+
+    '<polygon class="muka" data-info="Sisi tegak kanan — segitiga." points="195,90 195,160 255,125" fill="#ddd6fe" stroke="#6d28d9" stroke-width="2"/>'+
+    '<polygon class="muka" data-info="Sisi tegak bawah — segitiga." points="125,160 195,160 160,220" fill="#ede9fe" stroke="#6d28d9" stroke-width="2"/>'+
+    '<text x="160" y="242" font-size="13" fill="#475569">1 persegi + 4 segitiga</text></svg>',
+    solid:
+    '<svg viewBox="0 0 200 170" width="220" height="187" role="img" aria-label="Limas segiempat terlipat"><polygon points="40,130 120,110 180,130 100,150" fill="#ddd6fe" stroke="#6d28d9" stroke-width="2"/><polygon points="40,130 110,35 120,110" fill="#ede9fe" stroke="#6d28d9" stroke-width="2"/><polygon points="120,110 110,35 180,130" fill="#c4b5fd" stroke="#6d28d9" stroke-width="2"/><polygon points="100,150 110,35 180,130" fill="#a78bfa" stroke="#6d28d9" stroke-width="2" opacity="0.6"/><text x="45" y="165" font-size="13" fill="#475569">Limas segiempat — 5 sisi</text></svg>'}
+};
+var bangunAktif = "kubus", tampilSolid = false;
+function renderBangun(){
+  var b = NETS[bangunAktif];
+  $("tampilanBangun").innerHTML = tampilSolid ? b.solid : b.net;
+  $("btnTukarTampilan").textContent = tampilSolid ? "🔄 Lihat jaring-jaringnya" : "🔄 Lihat sebagai bangun ruang";
+  $("infoMuka").innerHTML = tampilSolid ? "<b>"+b.nama+" sudah terlipat.</b> Tekan tombol di atas untuk melihat jaring-jaringnya lagi." : "<b>Ketuk salah satu bagian jaring-jaring di atas</b> untuk melihat namanya.";
+}
+document.querySelectorAll(".tab-btn[data-bangun]").forEach(function(btn){
+  btn.addEventListener("click", function(){
+    document.querySelectorAll(".tab-btn[data-bangun]").forEach(function(x){ x.classList.remove("aktif"); });
+    btn.classList.add("aktif");
+    bangunAktif = btn.getAttribute("data-bangun"); tampilSolid = false; renderBangun();
+  });
+});
+$("btnTukarTampilan").addEventListener("click", function(){ tampilSolid = !tampilSolid; renderBangun(); });
+$("tampilanBangun").addEventListener("click", function(e){
+  var t = e.target.closest ? e.target.closest(".muka") : null;
+  if(t && t.getAttribute("data-info")){ $("infoMuka").innerHTML = "<b>"+t.getAttribute("data-info")+"</b>"; }
+});
+renderBangun();
+
+/* ---------- Kalkulator ---------- */
+var KALK_INPUT = {
+  kubus: '<label for="k1">Rusuk kubus (s) dalam cm <input type="number" id="k1" placeholder="contoh: 5"></label>',
+  balok: '<label for="k1">Panjang (p) cm <input type="number" id="k1" placeholder="contoh: 8"></label><label for="k2">Lebar (l) cm <input type="number" id="k2" placeholder="contoh: 5"></label><label for="k3">Tinggi (t) cm <input type="number" id="k3" placeholder="contoh: 4"></label>',
+  prisma: '<label for="k1">Alas segitiga (a) cm <input type="number" id="k1" placeholder="contoh: 6"></label><label for="k2">Tinggi segitiga (ts) cm <input type="number" id="k2" placeholder="contoh: 4"></label><label for="k3">Tinggi prisma (tp) cm <input type="number" id="k3" placeholder="contoh: 10"></label><p class="kecil">Segitiga alas dianggap sama kaki.</p>',
+  limas: '<label for="k1">Sisi alas persegi (s) cm <input type="number" id="k1" placeholder="contoh: 6"></label><label for="k2">Tinggi segitiga sisi tegak (tt) cm <input type="number" id="k2" placeholder="contoh: 5"></label><label for="k3">Tinggi limas (tl) cm <input type="number" id="k3" placeholder="contoh: 9"></label>'
+};
+function renderKalk(){ $("kalkInput").innerHTML = KALK_INPUT[$("kalkBangun").value]; }
+$("kalkBangun").addEventListener("change", renderKalk); renderKalk();
+$("btnHitung").addEventListener("click", function(){
+  var b = $("kalkBangun").value, h = $("kalkHasil");
+  var a = angka($("k1")?$("k1").value:null), c = angka($("k2")?$("k2").value:null), d = angka($("k3")?$("k3").value:null);
+  if(a===null || a<=0){ h.style.display="block"; h.innerHTML="<span class='salah'>Masukkan ukuran yang benar (bilangan positif).</span>"; return; }
+  var teks = "";
+  if(b==="kubus"){
+    teks = "L = 6 × s² = 6 × "+a+"² = 6 × "+(a*a)+" = <b>"+(6*a*a)+" cm²</b><br>V = s³ = "+a+"³ = <b>"+(a*a*a)+" cm³</b>";
+  } else if(b==="balok"){
+    if(c===null||d===null||c<=0||d<=0){ h.style.display="block"; h.innerHTML="<span class='salah'>Lengkapi panjang, lebar, dan tinggi.</span>"; return; }
+    var L = 2*(a*c+a*d+c*d);
+    teks = "L = 2 × (p×l + p×t + l×t) = 2 × ("+a+"×"+c+" + "+a+"×"+d+" + "+c+"×"+d+") = 2 × "+(a*c+a*d+c*d)+" = <b>"+L+" cm²</b><br>V = p × l × t = "+a+" × "+c+" × "+d+" = <b>"+(a*c*d)+" cm³</b>";
+  } else if(b==="prisma"){
+    if(c===null||d===null||c<=0||d<=0){ h.style.display="block"; h.innerHTML="<span class='salah'>Lengkapi alas segitiga, tinggi segitiga, dan tinggi prisma.</span>"; return; }
+    var Lalas = 0.5*a*c, m = Math.sqrt((a/2)*(a/2)+c*c), Kel = a+2*m, L = 2*Lalas+Kel*d, V = Lalas*d;
+    teks = "Luas alas segitiga = ½ × "+a+" × "+c+" = <b>"+bulat(Lalas)+" cm²</b><br>Sisi miring segitiga ≈ "+bulat(m)+" cm, keliling alas ≈ "+bulat(Kel)+" cm<br>L = 2 × "+bulat(Lalas)+" + "+bulat(Kel)+" × "+d+" = <b>"+bulat(L)+" cm²</b><br>V = "+bulat(Lalas)+" × "+d+" = <b>"+bulat(V)+" cm³</b>";
+  } else {
+    if(c===null||d===null||c<=0||d<=0){ h.style.display="block"; h.innerHTML="<span class='salah'>Lengkapi sisi alas, tinggi sisi tegak, dan tinggi limas.</span>"; return; }
+    var Lalas2 = a*a, L = Lalas2 + 2*a*c, V = (1/3)*Lalas2*d;
+    teks = "Luas alas = "+a+"² = <b>"+Lalas2+" cm²</b><br>Luas 4 sisi tegak = 4 × (½ × "+a+" × "+c+") = "+(2*a*c)+" cm²<br>L = "+Lalas2+" + "+(2*a*c)+" = <b>"+L+" cm²</b><br>V = ⅓ × "+Lalas2+" × "+d+" = <b>"+bulat(V)+" cm³</b>";
+  }
+  h.style.display="block"; h.innerHTML = teks;
+});
+
+/* ---------- LKPD ---------- */
+var KUNCI_LKPD = {1:[6,5,9,6], 2:[150,184,600], 3:[120,120,108], 4:[2400,12]};
+var PENJELAS_LKPD = {
+  1:["Kubus punya 6 sisi persegi.","Limas segiempat: 4 titik sudut alas + 1 puncak = 5.","Prisma segitiga: 3 rusuk alas + 3 rusuk tutup + 3 rusuk tegak = 9.","Jaring-jaring kubus = 6 persegi."],
+  2:["L = 6 × 5² = 6 × 25 = 150 cm².","L = 2 × (8×5 + 8×4 + 5×4) = 2 × 92 = 184 cm².","L = 6 × 10² = 600 cm²."],
+  3:["V = 6 × 4 × 5 = 120 cm³.","Luas alas = ½ × 6 × 4 = 12; V = 12 × 10 = 120 cm³.","V = ⅓ × 36 × 9 = 108 cm³."],
+  4:["L = 6 × 20² = 2.400 cm² kertas kado.","Volume tenda = (½ × 3 × 2) × 4 = 3 × 4 = 12 m³."]
+};
+function periksaLKPD(n){
+  var kunci = KUNCI_LKPD[n], benar = 0, detail = [];
+  kunci.forEach(function(k, i){
+    var id = "l"+n+["a","b","c","d"][i];
+    var el = $(id), v = angka(el?el.value:null);
+    var ok = dekat(v, k);
+    if(ok) benar++;
+    detail.push({soal:i+1, jawaban: v===null?"(kosong)":v, kunci:k, benar:ok});
+  });
+  var skor = Math.round(benar/kunci.length*100);
+  nilai["lkpd"+n] = skor;
+  rincian.lkpd["LKPD "+n] = detail;
+  $("skorL"+n).textContent = skor + "/100";
+  var html = (benar===kunci.length) ? "<span class='benar'>Sempurna! "+benar+"/"+kunci.length+" benar. Skor "+skor+"/100.</span>"
+    : "<span class='salah'>"+benar+"/"+kunci.length+" benar. Skor "+skor+"/100.</span> ";
+  html += "<br>" + detail.map(function(d,i){ return "Soal "+d.soal+": "+(d.benar?"✅":"❌")+" — "+PENJELAS_LKPD[n][i]; }).join("<br>");
+  $("hasilL"+n).innerHTML = html;
+  updateRekap();
+}
+
+/* ---------- Game ---------- */
+var GAME_A = [
+  {clue:"Aku punya 6 sisi persegi yang sama besar dan 12 rusuk sama panjang. Siapakah aku?", opsi:["Balok","Kubus","Limas segiempat","Prisma segitiga"], jawab:1},
+  {clue:"Alasku berbentuk segitiga dan aku punya 5 sisi. Siapakah aku?", opsi:["Kubus","Balok","Prisma segitiga","Limas segitiga"], jawab:2},
+  {clue:"Aku punya 1 titik puncak dan alas berbentuk persegi. Siapakah aku?", opsi:["Prisma segitiga","Kubus","Limas segiempat","Balok"], jawab:2},
+  {clue:"Aku seperti kotak sepatu: 6 sisi persegi panjang yang berpasangan sama. Siapakah aku?", opsi:["Balok","Kubus","Limas segitiga","Prisma segitiga"], jawab:0},
+  {clue:"Jumlah rusukku 12 dan semua sisiku persegi. Siapakah aku?", opsi:["Balok","Prisma segitiga","Limas segiempat","Kubus"], jawab:3},
+  {clue:"Alas dan tutupku kongruen, sisi tegakku persegi panjang. Aku prisma. Alasku segitiga — siapakah aku?", opsi:["Limas segitiga","Prisma segitiga","Balok","Kubus"], jawab:1}
+];
+var GAME_B = [
+  {grid:[[0,1,0,0],[1,1,1,1],[0,1,0,0]], label:"6 persegi berbentuk salib", valid:true},
+  {grid:[[1,1,1,1,1,1]], label:"6 persegi dalam satu baris lurus", valid:false},
+  {grid:[[1,1,1],[1,1,1]], label:"6 persegi dalam 2 baris × 3 kolom", valid:false},
+  {grid:[[1,1,0,0],[0,1,1,0],[0,0,1,1]], label:"6 persegi berbentuk tangga 2-2-2", valid:true},
+  {grid:[[1,1,1,1,1],[0,0,1,0,0]], label:"5 persegi sebaris + 1 persegi menempel di tengah", valid:false},
+  {grid:[[0,1,0],[1,1,1],[0,1,0],[0,1,0]], label:"6 persegi: kolom 4 persegi + 2 sayap", valid:true}
+];
+var gameAktif = "A", gaIdx = 0, gaBenar = 0, gbIdx = 0, gbBenar = 0, gcSoal = [], gcSelesai = false;
+function svgGrid(grid){
+  var s = 34, rows = grid.length, cols = grid[0].length, out = '<svg viewBox="0 0 '+(cols*s)+' '+(rows*s)+'" width="'+(cols*s)+'" height="'+(rows*s)+'" role="img" aria-label="Pola jaring-jaring">';
+  grid.forEach(function(r, y){ r.forEach(function(v, x){ if(v) out += '<rect x="'+(x*s+1)+'" y="'+(y*s+1)+'" width="'+(s-2)+'" height="'+(s-2)+'" fill="#bfdbfe" stroke="#0b5fa5" stroke-width="2"/>'; }); });
+  return out + "</svg>";
+}
+function renderGame(){
+  var arena = $("arenaGame");
+  document.querySelectorAll(".tab-btn[data-game]").forEach(function(x){ x.classList.toggle("aktif", x.getAttribute("data-game")===gameAktif); });
+  if(gameAktif==="A"){
+    if(gaIdx >= GAME_A.length){
+      arena.innerHTML = "<p class='skor'>Game A selesai! Benar "+gaBenar+" dari "+GAME_A.length+". Skor: <b>"+nilai.gameA+"/100</b></p><p><button class='btn' onclick='ulangGame(\"A\")'>🔁 Main Lagi</button></p>";
+      return;
+    }
+    var g = GAME_A[gaIdx];
+    arena.innerHTML = "<p><b>Soal "+(gaIdx+1)+" dari "+GAME_A.length+":</b> "+g.clue+"</p>" +
+      g.opsi.map(function(o,i){ return "<label class='pilihan'><input type='radio' name='ga' value='"+i+"'> "+o+"</label>"; }).join("") +
+      "<p><button class='btn hijau' onclick='jawabGameA()'>Jawab</button></p><p id='umpanGA'></p>";
+  } else if(gameAktif==="B"){
+    if(gbIdx >= GAME_B.length){
+      arena.innerHTML = "<p class='skor'>Game B selesai! Benar "+gbBenar+" dari "+GAME_B.length+". Skor: <b>"+nilai.gameB+"/100</b></p><p><button class='btn' onclick='ulangGame(\"B\")'>🔁 Main Lagi</button></p>";
+      return;
+    }
+    var b = GAME_B[gbIdx];
+    arena.innerHTML = "<p><b>Soal "+(gbIdx+1)+" dari "+GAME_B.length+":</b> "+b.label+". Apakah ini jaring-jaring kubus yang <b>benar</b>?</p><div class='svg-wrap'>"+svgGrid(b.grid)+"</div>" +
+      "<p><button class='btn hijau' onclick='jawabGameB(true)'>✅ Benar</button> <button class='btn' onclick='jawabGameB(false)'>❌ Salah</button></p><p id='umpanGB'></p>";
+  } else {
+    if(!gcSoal.length) buatSoalHitungCepat();
+    if(gcSelesai){
+      arena.innerHTML = "<p class='skor'>Game C selesai! Skor: <b>"+nilai.gameC+"/100</b></p><p id='umpanGC'></p><p><button class='btn' onclick='ulangGame(\"C\")'>🔁 Main Lagi (soal baru)</button></p>";
+      return;
+    }
+    arena.innerHTML = "<p>Hitung secepat dan setepat mungkin! Tulis jawaban angkanya saja (satuan sudah ditulis).</p>" +
+      gcSoal.map(function(s,i){ return "<label>"+(i+1)+". "+s.teks+" <input type='number' id='gc"+i+"' style='max-width:160px' placeholder='…'></label>"; }).join("") +
+      "<p><button class='btn hijau' onclick='periksaGameC()'>Periksa Hitung Cepat</button></p><p id='umpanGC'></p>";
+  }
+}
+function jawabGameA(){
+  var pilih = document.querySelector("input[name='ga']:checked");
+  if(!pilih){ $("umpanGA").innerHTML = "<span class='salah'>Pilih dulu salah satu jawaban.</span>"; return; }
+  var g = GAME_A[gaIdx], ok = parseInt(pilih.value,10)===g.jawab;
+  if(ok) gaBenar++;
+  $("umpanGA").innerHTML = ok ? "<span class='benar'>Benar! 🎉 "+g.opsi[g.jawab]+" memang jawabannya.</span>" : "<span class='salah'>Belum tepat. Jawabannya: <b>"+g.opsi[g.jawab]+"</b>.</span>";
+  gaIdx++;
+  if(gaIdx >= GAME_A.length){ nilai.gameA = Math.round(gaBenar/GAME_A.length*100); rincian.game["Tebak Bangun"] = gaBenar+" benar dari "+GAME_A.length; $("skorGA").textContent = nilai.gameA+"/100"; updateRekap(); }
+  setTimeout(renderGame, 1400);
+}
+function jawabGameB(){
+  var b = GAME_B[gbIdx];
+  var pilihBenar = (arguments[0]===true);
+  var ok = pilihBenar===b.valid;
+  if(ok) gbBenar++;
+  $("umpanGB").innerHTML = ok ? "<span class='benar'>Benar! 🎉</span>" : "<span class='salah'>Belum tepat.</span>";
+  $("umpanGB").innerHTML += b.valid ? " Pola ini <b>bisa</b> dilipat menjadi kubus tanpa sisi bertumpuk." : " Pola ini <b>tidak bisa</b> menjadi kubus — ada sisi yang bertumpuk atau hilang saat dilipat.";
+  gbIdx++;
+  if(gbIdx >= GAME_B.length){ nilai.gameB = Math.round(gbBenar/GAME_B.length*100); rincian.game["Jaring Benar/Salah"] = gbBenar+" benar dari "+GAME_B.length; $("skorGB").textContent = nilai.gameB+"/100"; updateRekap(); }
+  setTimeout(renderGame, 1800);
+}
+function ulangGame(g){
+  if(g==="A"){ gaIdx=0; gaBenar=0; nilai.gameA=null; $("skorGA").textContent="—"; }
+  if(g==="B"){ gbIdx=0; gbBenar=0; nilai.gameB=null; $("skorGB").textContent="—"; }
+  if(g==="C"){ gcSoal=[]; gcSelesai=false; nilai.gameC=null; $("skorGC").textContent="—"; }
+  updateRekap(); renderGame();
+}
+function acak(n){ return Math.floor(Math.random()*n); }
+function buatSoalHitungCepat(){
+  gcSoal = [];
+  var pola = [
+    function(){ var s=2+acak(8); return {teks:"Luas permukaan kubus rusuk "+s+" cm = … cm²", jawab:6*s*s}; },
+    function(){ var s=2+acak(9); return {teks:"Volume kubus rusuk "+s+" cm = … cm³", jawab:s*s*s}; },
+    function(){ var p=2+acak(8), l=2+acak(6), t=2+acak(5); return {teks:"Volume balok "+p+" × "+l+" × "+t+" cm = … cm³", jawab:p*l*t}; },
+    function(){ var a=4+2*acak(4), ts=3+acak(5), tp=5+acak(6); return {teks:"Volume prisma segitiga (alas "+a+" cm, tinggi segitiga "+ts+" cm, tinggi prisma "+tp+" cm) = … cm³", jawab:0.5*a*ts*tp}; },
+    function(){ var s=4+acak(5), tl=6+3*acak(3); return {teks:"Volume limas segiempat (alas "+s+" × "+s+" cm, tinggi "+tl+" cm) = … cm³", jawab:(1/3)*s*s*tl}; },
+    function(){ var s=3+acak(8); return {teks:"Luas permukaan kubus rusuk "+s+" cm = … cm²", jawab:6*s*s}; }
+  ];
+  for(var i=0;i<8;i++){ gcSoal.push(pola[acak(pola.length)]()); }
+}
+function periksaGameC(){
+  var benar=0, detail=[];
+  gcSoal.forEach(function(s,i){
+    var v = angka($("gc"+i)?$("gc"+i).value:null), ok = dekat(v, s.jawab);
+    if(ok) benar++;
+    detail.push({soal:i+1, teks:s.teks, jawaban:v===null?"(kosong)":v, kunci:s.jawab, benar:ok});
+  });
+  nilai.gameC = Math.round(benar/gcSoal.length*100);
+  rincian.game["Hitung Cepat"] = detail;
+  $("skorGC").textContent = nilai.gameC+"/100";
+  gcSelesai = true;
+  var umpan = "<span class='"+(benar===gcSoal.length?"benar":"salah")+"'>"+benar+"/"+gcSoal.length+" benar. Skor "+nilai.gameC+"/100.</span><br>" +
+    detail.map(function(d){ return "Soal "+d.soal+": "+(d.benar?"✅":"❌")+" (kunci: "+d.kunci+")"; }).join("<br>");
+  updateRekap(); renderGame();
+  var u = $("umpanGC"); if(u) u.innerHTML = umpan;
+}
+document.querySelectorAll(".tab-btn[data-game]").forEach(function(btn){
+  btn.addEventListener("click", function(){ gameAktif = btn.getAttribute("data-game"); renderGame(); });
+});
+renderGame();
+
+/* ---------- Kuis ---------- */
+var KUIS = [
+  {t:"Luas permukaan kubus dengan rusuk 4 cm adalah …", opsi:["24 cm²","48 cm²","64 cm²","96 cm²"], jawab:3},
+  {t:"Volume balok 5 cm × 3 cm × 2 cm adalah …", opsi:["10 cm³","30 cm³","60 cm³","15 cm³"], jawab:1},
+  {t:"Jumlah rusuk limas segiempat adalah …", opsi:["4","5","6","8"], jawab:3},
+  {t:"Limas dengan luas alas 24 cm² dan tinggi 9 cm. Volumenya …", opsi:["216 cm³","72 cm³","108 cm³","48 cm³"], jawab:1},
+  {t:"Prisma segitiga dengan luas alas 15 cm² dan tinggi prisma 8 cm. Volumenya …", opsi:["23 cm³","120 cm³","60 cm³","240 cm³"], jawab:1}
+];
+$("daftarKuis").innerHTML = KUIS.map(function(k,i){
+  return "<div class='kotak-soal'><p><b>"+(i+1)+".</b> "+k.t+"</p>" +
+    k.opsi.map(function(o,j){ return "<label class='pilihan'><input type='radio' name='kuis"+i+"' value='"+j+"'> "+o+"</label>"; }).join("") + "</div>";
+}).join("");
+function periksaKuis(){
+  var benar=0, detail=[];
+  KUIS.forEach(function(k,i){
+    var pilih = document.querySelector("input[name='kuis"+i+"']:checked");
+    var v = pilih?parseInt(pilih.value,10):null, ok = v===k.jawab;
+    if(ok) benar++;
+    detail.push({soal:i+1, jawaban: v===null?"(kosong)":k.opsi[v], kunci:k.opsi[k.jawab], benar:ok});
+  });
+  nilai.kuis = Math.round(benar/KUIS.length*100);
+  rincian.kuis = detail;
+  $("skorKuis").textContent = nilai.kuis+"/100";
+  $("hasilKuis").innerHTML = "<span class='"+(benar===KUIS.length?"benar":"salah")+"'>Skormu: <b>"+benar+"/"+KUIS.length+"</b> ("+nilai.kuis+"/100). "+(benar===5?"Sempurna!":benar>=3?"Bagus, ulangi bagian yang masih salah.":"Coba lagi dari bagian rumus dan contoh.")+"</span><br>" +
+    detail.map(function(d){ return "Soal "+d.soal+": "+(d.benar?"✅":"❌")+" — kunci: "+d.kunci; }).join("<br>");
+  updateRekap();
+}
+
+/* ---------- Rekap & nilai akhir ---------- */
+function rata(arr){ var a = arr.filter(function(x){ return x!==null && x!==undefined; }); if(!a.length) return null; return Math.round(a.reduce(function(s,v){ return s+v; },0)/a.length); }
+function predikat(n){ if(n===null) return "—"; if(n>=90) return "Sangat Baik"; if(n>=75) return "Baik"; if(n>=60) return "Cukup"; return "Perlu Bimbingan"; }
+function updateRekap(){
+  var rl = rata([nilai.lkpd1,nilai.lkpd2,nilai.lkpd3,nilai.lkpd4]);
+  var rg = rata([nilai.gameA,nilai.gameB,nilai.gameC]);
+  var akhir = rata([rl, rg, nilai.kuis]);
+  $("rataLKPD").textContent = rl===null ? "—" : rl+"/100";
+  $("rataGame").textContent = rg===null ? "—" : rg+"/100";
+  $("rekLKPD").textContent = rl===null ? "—" : rl+"/100";
+  $("rekGame").textContent = rg===null ? "—" : rg+"/100";
+  $("rekKuis").textContent = nilai.kuis===null ? "—" : nilai.kuis+"/100";
+  $("rekAkhir").innerHTML = akhir===null ? "<b>—</b>" : "<b>"+akhir+"/100</b>";
+  $("rekPredikat").textContent = predikat(akhir);
+  $("barNilai").style.width = (akhir===null?0:akhir)+"%";
+}
+function hasilSaatIni(){
+  var idn = identitasSiswa();
+  var rl = rata([nilai.lkpd1,nilai.lkpd2,nilai.lkpd3,nilai.lkpd4]);
+  var rg = rata([nilai.gameA,nilai.gameB,nilai.gameC]);
+  var akhir = rata([rl, rg, nilai.kuis]);
+  return {id:idn, lkpd1:nilai.lkpd1, lkpd2:nilai.lkpd2, lkpd3:nilai.lkpd3, lkpd4:nilai.lkpd4,
+    gameA:nilai.gameA, gameB:nilai.gameB, gameC:nilai.gameC, kuis:nilai.kuis,
+    rataLKPD:rl, rataGame:rg, akhir:akhir, predikat:predikat(akhir),
+    tanggal:tglSingkat(), refleksi:($("refleksi").value||"").trim()};
+}
+function bacaRekap(){ try{ return JSON.parse(localStorage.getItem("brsd_rekap_v1")||"[]"); }catch(e){ return []; } }
+function tampilRekap(){
+  var data = bacaRekap(), tbl = $("tabelRekap");
+  var rows = tbl.querySelectorAll("tr"); for(var i=1;i<rows.length;i++){ rows[i].remove(); }
+  var kosong = $("barisKosong"); if(kosong) kosong.remove();
+  if(!data.length){
+    var tr = document.createElement("tr"); tr.id="barisKosong";
+    tr.innerHTML = "<td colspan='15'>Belum ada hasil tersimpan. Kerjakan LKPD / game / kuis, lalu tekan “Simpan Hasil Saya”.</td>";
+    tbl.appendChild(tr); return;
+  }
+  data.forEach(function(r){
+    var tr = document.createElement("tr");
+    [r.no, r.nis, r.kelas, r.nama, r.lkpd1, r.lkpd2, r.lkpd3, r.lkpd4, r.gameA, r.gameB, r.gameC, r.kuis, r.akhir, r.predikat, r.tanggal].forEach(function(v){
+      var td = document.createElement("td"); td.textContent = (v===null||v===undefined||v==="")?"—":v; tr.appendChild(td);
+    });
+    tbl.appendChild(tr);
+  });
+}
+function simpanHasil(){
+  var h = hasilSaatIni();
+  if(!h.id){ $("pesanRekap").innerHTML = "<span class='salah'>Pilih kelas dan nama dulu di bagian Identitas.</span>"; document.getElementById("identitas").scrollIntoView({behavior:"smooth"}); return; }
+  if(h.akhir===null){ $("pesanRekap").innerHTML = "<span class='salah'>Belum ada skor. Kerjakan minimal satu LKPD, game, atau kuis dulu.</span>"; return; }
+  var data = bacaRekap();
+  var baris = {no:h.id.no, nis:h.id.nis, kelas:h.id.kelas, nama:h.id.nama, lkpd1:h.lkpd1, lkpd2:h.lkpd2, lkpd3:h.lkpd3, lkpd4:h.lkpd4, gameA:h.gameA, gameB:h.gameB, gameC:h.gameC, kuis:h.kuis, akhir:h.akhir, predikat:h.predikat, tanggal:h.tanggal, refleksi:h.refleksi};
+  var idx = -1;
+  for(var i=0;i<data.length;i++){ if(data[i].nis===baris.nis && data[i].nama===baris.nama){ idx=i; break; } }
+  if(idx>=0) data[idx]=baris; else data.push(baris);
+  try{ localStorage.setItem("brsd_rekap_v1", JSON.stringify(data)); }catch(e){ $("pesanRekap").innerHTML = "<span class='salah'>Tidak bisa menyimpan di perangkat ini (penyimpanan penuh/diblokir). Tetap bisa mengekspor hasil saat ini.</span>"; return; }
+  tampilRekap();
+  $("pesanRekap").innerHTML = "<span class='benar'>Tersimpan: "+baris.nama+" ("+baris.kelas+") — Nilai Akhir "+baris.akhir+"/100 ("+baris.predikat+").</span>";
+}
+function hapusRekap(){
+  if(!confirm("Hapus semua rekap yang tersimpan di perangkat ini?")) return;
+  try{ localStorage.removeItem("brsd_rekap_v1"); }catch(e){}
+  tampilRekap(); $("pesanRekap").textContent = "Rekap di perangkat ini sudah dihapus.";
+}
+
+/* ---------- Pembuat file .xlsx (murni JavaScript, tanpa internet) ---------- */
+var CRC_TABEL = (function(){ var t=[], c; for(var n=0;n<256;n++){ c=n; for(var k=0;k<8;k++){ c = (c&1) ? (0xEDB88320 ^ (c>>>1)) : (c>>>1); } t[n]=c>>>0; } return t; })();
+function crc32(buf){ var c=0xFFFFFFFF; for(var i=0;i<buf.length;i++){ c = CRC_TABEL[(c ^ buf[i]) & 0xFF] ^ (c>>>8); } return (c ^ 0xFFFFFFFF)>>>0; }
+function dosDateTime(d){
+  var dosTime = ((d.getHours()&31)<<11)|((d.getMinutes()&63)<<5)|((Math.floor(d.getSeconds()/2))&31);
+  var dosDate = (((d.getFullYear()-1980)&127)<<9)|(((d.getMonth()+1)&15)<<5)|(d.getDate()&31);
+  return {t:dosTime, d:dosDate};
+}
+function zipStore(files){
+  var enc = new TextEncoder(), now = dosDateTime(new Date());
+  var localParts=[], centralParts=[], offset=0, totalLocal=0;
+  files.forEach(function(f){
+    var nameBytes = enc.encode(f.name), dataBytes = (typeof f.data==="string") ? enc.encode(f.data) : f.data;
+    var crc = crc32(dataBytes);
+    var lh = new DataView(new ArrayBuffer(30));
+    lh.setUint32(0, 0x04034b50, true); lh.setUint16(4, 20, true); lh.setUint16(6, 0x0800, true);
+    lh.setUint16(8, 0, true); lh.setUint16(10, now.t, true); lh.setUint16(12, now.d, true);
+    lh.setUint32(14, crc, true); lh.setUint32(18, dataBytes.length, true); lh.setUint32(22, dataBytes.length, true);
+    lh.setUint16(26, nameBytes.length, true); lh.setUint16(28, 0, true);
+    localParts.push(lh.buffer, nameBytes, dataBytes);
+    var ch = new DataView(new ArrayBuffer(46));
+    ch.setUint32(0, 0x02014b50, true); ch.setUint16(4, 20, true); ch.setUint16(6, 20, true);
+    ch.setUint16(8, 0x0800, true); ch.setUint16(10, 0, true); ch.setUint16(12, now.t, true); ch.setUint16(14, now.d, true);
+    ch.setUint32(16, crc, true); ch.setUint32(20, dataBytes.length, true); ch.setUint32(24, dataBytes.length, true);
+    ch.setUint16(28, nameBytes.length, true); ch.setUint16(30, 0, true); ch.setUint16(32, 0, true);
+    ch.setUint16(34, 0, true); ch.setUint16(36, 0, true); ch.setUint32(38, 0, true); ch.setUint32(42, offset, true);
+    centralParts.push(ch.buffer, nameBytes);
+    var thisLen = 30 + nameBytes.length + dataBytes.length;
+    totalLocal += thisLen; offset += thisLen;
+  });
+  var cdSize = centralParts.reduce(function(s,p){ return s + p.byteLength; }, 0);
+  var eocd = new DataView(new ArrayBuffer(22));
+  eocd.setUint32(0, 0x06054b50, true); eocd.setUint16(4, 0, true); eocd.setUint16(6, 0, true);
+  eocd.setUint16(8, files.length, true); eocd.setUint16(10, files.length, true);
+  eocd.setUint32(12, cdSize, true); eocd.setUint32(16, totalLocal, true); eocd.setUint16(20, 0, true);
+  var parts = localParts.concat(centralParts, [eocd.buffer]);
+  var total = parts.reduce(function(s,p){ return s + p.byteLength; }, 0);
+  var out = new Uint8Array(total), pos = 0;
+  parts.forEach(function(p){ var u = new Uint8Array(p); out.set(u, pos); pos += u.length; });
+  return out;
+}
+function kolHuruf(n){ var s=""; while(n>0){ var m=(n-1)%26; s=String.fromCharCode(65+m)+s; n=Math.floor((n-1)/26); } return s; }
+function sheetXml(rows, lebar){
+  var xml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><dimension ref="A1:'+kolHuruf(rows[0].length)+rows.length+'"/><sheetViews><sheetView workbookViewId="0"/></sheetViews><sheetFormatPr defaultRowHeight="18"/>';
+  if(lebar){ xml += "<cols>"; lebar.forEach(function(w,i){ xml += '<col min="'+(i+1)+'" max="'+(i+1)+'" width="'+w+'" customWidth="1"/>'; }); xml += "</cols>"; }
+  xml += "<sheetData>";
+  rows.forEach(function(row, ri){
+    xml += '<row r="'+(ri+1)+'">';
+    row.forEach(function(v, ci){
+      var ref = kolHuruf(ci+1)+(ri+1);
+      if(v===null||v===undefined||v===""){ xml += '<c r="'+ref+'"/>'; }
+      else if(typeof v==="number"){ xml += '<c r="'+ref+'" s="0"><v>'+v+'</v></c>'; }
+      else { xml += '<c r="'+ref+'" t="inlineStr" s="'+(ri===0?"1":"0")+'"><is><t>'+escXml(v)+'</t></is></c>'; }
+    });
+    xml += "</row>";
+  });
+  return xml + "</sheetData></worksheet>";
+}
+function buildXlsx(sheets){
+  var files = [], rels = "", types = "", wb = "";
+  sheets.forEach(function(sh, i){
+    var n = i+1;
+    files.push({name:"xl/worksheets/sheet"+n+".xml", data:sheetXml(sh.rows, sh.lebar)});
+    rels += '<Relationship Id="rId'+n+'" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet'+n+'.xml"/>';
+    types += '<Override PartName="/xl/worksheets/sheet'+n+'.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>';
+    wb += '<sheet name="'+escXml(sh.name)+'" sheetId="'+n+'" r:id="rId'+n+'"/>';
+  });
+  files.push({name:"[Content_Types].xml", data:'<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/>'+types+'<Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/></Types>'});
+  files.push({name:"_rels/.rels", data:'<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/></Relationships>'});
+  files.push({name:"xl/workbook.xml", data:'<?xml version="1.0" encoding="UTF-8" standalone="yes"?><workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheets>'+wb+'</sheets></workbook>'});
+  files.push({name:"xl/_rels/workbook.xml.rels", data:'<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'+rels+'<Relationship Id="rIdStyles" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/></Relationships>'});
+  files.push({name:"xl/styles.xml", data:'<?xml version="1.0" encoding="UTF-8" standalone="yes"?><styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><fonts><font><sz val="11"/><name val="Calibri"/></font><font><b/><sz val="11"/><name val="Calibri"/></font></fonts><fills><fill><patternFill patternType="none"/></fill><fill><patternFill patternType="gray125"/></fill><fill><patternFill patternType="solid"><fgColor rgb="FFD9E2F3"/><bgColor rgb="FFD9E2F3"/></patternFill></fill></fills><borders><border><left/><right/><top/><bottom/><diagonal/></border></borders><cellStyleXfs><xf numFmtId="0" fontId="0" fillId="0" borderId="0"/></cellStyleXfs><cellXfs><xf numFmtId="0" fontId="0" fillId="0" borderId="0"/><xf numFmtId="0" fontId="1" fillId="2" borderId="0" applyFont="1" applyFill="1"/></cellXfs><cellStyles><cellStyle name="Normal" xfId="0" builtinId="0"/></cellStyles></styleSheet>'});
+  return zipStore(files);
+}
+function unduhBlob(blob, nama){
+  var a = document.createElement("a");
+  a.href = URL.createObjectURL(blob); a.download = nama;
+  document.body.appendChild(a); a.click();
+  setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 500);
+}
+var KOLOM_REKAP = ["NO","NISN/NIS","KELAS","NAMA","LKPD 1","LKPD 2","LKPD 3","LKPD 4","Game A","Game B","Game C","Kuis","Nilai Akhir","Predikat","Tanggal"];
+var LEBAR_REKAP = [6,20,8,32,9,9,9,9,9,9,9,9,12,16,13];
+function barisRekap(r){ return [r.no, r.nis, r.kelas, r.nama, (r.lkpd1===null||r.lkpd1===undefined?"":r.lkpd1), (r.lkpd2===null||r.lkpd2===undefined?"":r.lkpd2), (r.lkpd3===null||r.lkpd3===undefined?"":r.lkpd3), (r.lkpd4===null||r.lkpd4===undefined?"":r.lkpd4), (r.gameA===null||r.gameA===undefined?"":r.gameA), (r.gameB===null||r.gameB===undefined?"":r.gameB), (r.gameC===null||r.gameC===undefined?"":r.gameC), (r.kuis===null||r.kuis===undefined?"":r.kuis), (r.akhir===null||r.akhir===undefined?"":r.akhir), r.predikat||"", r.tanggal||""]; }
+function lembarRincian(h){
+  var rows = [["Bangun Ruang Sisi Datar — Rincian Jawaban"],["Nama", h.id?h.id.nama:"", "Kelas", h.id?h.id.kelas:"", "NISN/NIS", h.id?h.id.nis:"", "Tanggal", h.tanggal],[""], ["Bagian","Soal","Jawaban Siswa","Kunci","Benar?"]];
+  Object.keys(rincian.lkpd).forEach(function(k){
+    rincian.lkpd[k].forEach(function(d){ rows.push([k, "Soal "+d.soal, d.jawaban, d.kunci, d.benar?"Benar":"Salah"]); });
+  });
+  Object.keys(rincian.game).forEach(function(k){
+    var v = rincian.game[k];
+    if(Array.isArray(v)){ v.forEach(function(d){ rows.push([k, "Soal "+d.soal, d.jawaban, d.kunci, d.benar?"Benar":"Salah"]); }); }
+    else { rows.push([k, "—", v, "—", "—"]); }
+  });
+  rincian.kuis.forEach(function(d){ rows.push(["Kuis", "Soal "+d.soal, d.jawaban, d.kunci, d.benar?"Benar":"Salah"]); });
+  if(h.refleksi) rows.push(["Refleksi", "—", h.refleksi, "—", "—"]);
+  return {name:"Rincian Jawaban", rows:rows, lebar:[16,10,40,24,10]};
+}
+function eksporHasilSayaXLSX(){
+  var h = hasilSaatIni();
+  if(!h.id){ $("pesanRekap").innerHTML = "<span class='salah'>Pilih kelas dan nama dulu di bagian Identitas.</span>"; return; }
+  if(h.akhir===null){ $("pesanRekap").innerHTML = "<span class='salah'>Belum ada skor untuk diekspor.</span>"; return; }
+  var baris = {no:h.id.no, nis:h.id.nis, kelas:h.id.kelas, nama:h.id.nama, lkpd1:h.lkpd1, lkpd2:h.lkpd2, lkpd3:h.lkpd3, lkpd4:h.lkpd4, gameA:h.gameA, gameB:h.gameB, gameC:h.gameC, kuis:h.kuis, akhir:h.akhir, predikat:h.predikat, tanggal:h.tanggal};
+  var bytes = buildXlsx([
+    {name:"Rekap", rows:[KOLOM_REKAP, barisRekap(baris)], lebar:LEBAR_REKAP},
+    lembarRincian(h)
+  ]);
+  unduhBlob(new Blob([bytes], {type:"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"}), "Hasil-BRSD-"+h.id.kelas+"-"+h.id.nama.replace(/\s+/g,"_")+".xlsx");
+  $("pesanRekap").innerHTML = "<span class='benar'>File .xlsx hasil "+h.id.nama+" berhasil diunduh.</span>";
+}
+function eksporRekapKelasXLSX(){
+  var data = bacaRekap();
+  var rows = [KOLOM_REKAP];
+  if(data.length){ data.forEach(function(r){ rows.push(barisRekap(r)); }); }
+  else {
+    Object.keys(SISWA).forEach(function(k){ SISWA[k].forEach(function(s){ rows.push([s.no, s.nis, s.kelas, s.nama, "", "", "", "", "", "", "", "", "", "", ""]); }); });
+  }
+  var bytes = buildXlsx([{name:"Rekap", rows:rows, lebar:LEBAR_REKAP}]);
+  unduhBlob(new Blob([bytes], {type:"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"}), "Rekap-BRSD-Kelas9-"+tglSingkat()+".xlsx");
+  $("pesanRekap").innerHTML = data.length
+    ? "<span class='benar'>Rekap kelas berhasil diunduh ("+data.length+" siswa tersimpan).</span>"
+    : "<span class='benar'>Belum ada hasil tersimpan — yang diunduh adalah template rekap berisi 136 siswa (9A–9D). Isi skornya, lalu simpan.</span>";
+}
+function eksporTemplateXLSX(){
+  var rows = [KOLOM_REKAP];
+  Object.keys(SISWA).forEach(function(k){ SISWA[k].forEach(function(s){ rows.push([s.no, s.nis, s.kelas, s.nama, "", "", "", "", "", "", "", "", "", "", ""]); }); });
+  var bytes = buildXlsx([{name:"Rekap", rows:rows, lebar:LEBAR_REKAP}]);
+  unduhBlob(new Blob([bytes], {type:"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"}), "Template-Rekap-BRSD-Kelas9.xlsx");
+  $("pesanRekap").innerHTML = "<span class='benar'>Template kosong (136 siswa, 9A–9D) berhasil diunduh.</span>";
+}
+function csvLapangan(v){
+  var s = (v===null||v===undefined)?"":String(v);
+  return /[";\n]/.test(s) ? '"'+s.replace(/"/g,'""')+'"' : s;
+}
+function eksporHasilSayaCSV(){
+  var h = hasilSaatIni();
+  if(!h.id){ $("pesanRekap").innerHTML = "<span class='salah'>Pilih kelas dan nama dulu di bagian Identitas.</span>"; return; }
+  if(h.akhir===null){ $("pesanRekap").innerHTML = "<span class='salah'>Belum ada skor untuk diekspor.</span>"; return; }
+  var baris = {no:h.id.no, nis:h.id.nis, kelas:h.id.kelas, nama:h.id.nama, lkpd1:h.lkpd1, lkpd2:h.lkpd2, lkpd3:h.lkpd3, lkpd4:h.lkpd4, gameA:h.gameA, gameB:h.gameB, gameC:h.gameC, kuis:h.kuis, akhir:h.akhir, predikat:h.predikat, tanggal:h.tanggal};
+  var csv = "﻿" + KOLOM_REKAP.map(csvLapangan).join(";") + "\n" + barisRekap(baris).map(csvLapangan).join(";") + "\n";
+  unduhBlob(new Blob([csv], {type:"text/csv;charset=utf-8"}), "Hasil-BRSD-"+h.id.kelas+"-"+h.id.nama.replace(/\s+/g,"_")+".csv");
+  $("pesanRekap").innerHTML = "<span class='benar'>File .csv hasil "+h.id.nama+" berhasil diunduh (pemisah ;).</span>";
+}
+tampilRekap();
+updateRekap();
+</script>
+</body>
+</html>
